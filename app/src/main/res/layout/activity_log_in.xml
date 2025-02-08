@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#85BDEB"
+    android:padding="32dp">
+
+    <ImageView
+        android:layout_marginTop="75dp"
+        android:id="@+id/account1"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginLeft="75dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/account"></ImageView>
+
+    <EditText
+        android:id="@+id/usernameEditText1"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@id/account1"
+        android:background="@drawable/edittext_bg"
+        android:hint="Username"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="#333333"
+        android:textColorHint="#888888"
+        android:textSize="18sp"
+        android:inputType="text"
+        android:drawableLeft="@drawable/ic_username"
+        android:drawablePadding="12dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp" />
+
+    <EditText
+        android:id="@+id/passwordEditText1"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_below="@id/usernameEditText1"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/edittext_bg"
+        android:hint="Password"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="#333333"
+        android:textColorHint="#888888"
+        android:textSize="18sp"
+        android:inputType="textPassword"
+        android:drawableLeft="@drawable/ic_password"
+        android:drawablePadding="12dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp" />
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginLeft="190dp"
+        android:layout_marginTop="425dp"
+        android:text="Show Password"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/LogInButton"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Log In"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:backgroundTint="#031B83FF"
+        android:layout_below="@id/passwordEditText1"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_button"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"/>
+
+    <TextView
+        android:id="@+id/signUpLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Don't have an account? Sign Up"
+        android:textColor="#0C34A9"
+        android:textSize="16sp"
+        android:layout_below="@id/LogInButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="onSignUpClicked"/>
+
+</RelativeLayout>
