@@ -1,9 +1,20 @@
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#3b5998"/>
-    <corners android:radius="30dp"/>
-    <shadow
-        android:dx="0dp"
-        android:dy="4dp"
-        android:radius="6dp"
-        android:color="#colorPrimaryDark"/>
-</shape>
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Ստվեր -->
+    <item android:left="2dp" android:top="2dp">
+        <shape android:shape="rectangle">
+            <corners android:radius="30dp"/>
+            <solid android:color="#2a4887"/> <!-- Ստվերի ավելի մուգ գույն -->
+        </shape>
+    </item>
+
+    <!-- Հիմնական կոճակը -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#3b5998"/> <!-- Բուն կոճակի գույնը -->
+            <corners android:radius="30dp"/>
+        </shape>
+    </item>
+
+</layer-list>

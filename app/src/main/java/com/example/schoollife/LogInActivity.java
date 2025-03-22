@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.text.method.PasswordTransformationMethod;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -36,15 +37,30 @@ public class LogInActivity extends AppCompatActivity {
         Intent intent = new Intent(LogInActivity.this, HomeActivity.class);
         startActivity(intent);
 
+       // checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+         //   @Override
+           // public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+             //   if (isChecked) {
+               //     passwordEditText.setInputType(InputType.TYPE_CLASS_TEXT);
+                //} else {
+                  //  passwordEditText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                //}
+                //passwordEditText.setSelection(passwordEditText.getText().length());
+            //}
+        //});
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    passwordEditText.setInputType(InputType.TYPE_CLASS_TEXT);
+                    // Երբ checkbox-ը նշված է, ցույց տալ գաղտնաբառը
+                    passwordEditText.setTransformationMethod(null);
                 } else {
-                    passwordEditText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    // Երբ checkbox-ը նշված չէ, թաքցնել գաղտնաբառը
+                    passwordEditText.setTransformationMethod(new PasswordTransformationMethod());
                 }
-                passwordEditText.setSelection(passwordEditText.getText().length());
+                // Պահպանել կուրսորի դիրքը
+                int position = passwordEditText.getSelectionStart();
+                passwordEditText.setSelection(position);
             }
         });
     }
