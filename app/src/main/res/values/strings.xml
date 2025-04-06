@@ -1,3 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">SchoolLife</string>
+
+    <!-- Quiz Navigation -->
+    <string name="next_button">Next</string>
+    <string name="restart_button">Restart</string>
+    <string name="home_button">Home</string>
+
+    <!-- Toasts & Dialog Messages -->
+    <string name="correct_toast">Correct!</string>
+    <string name="incorrect_toast">Wrong! The correct answer is:</string>
+    <string name="results_title">Quiz results</string>
+    <string name="results_message">Your final results are:</string>
+    <string name="correct_answers">Correct answers</string>
+    <string name="percentage">Percent</string>
+
+    <!-- Questions -->
+    <string name="q1">What is the largest ocean on Earth?</string>
+    <string name="q1_option1">Pacific Ocean</string>
+    <string name="q1_option2">Atlantic Ocean</string>
+    <string name="q1_option3">Indian Ocean</string>
+    <string name="q1_option4">Arctic Ocean</string>
+
+    <string name="q2">Which country has the largest population in the world?</string>
+    <string name="q2_option1">United States</string>
+    <string name="q2_option2">China</string>
+    <string name="q2_option3">India</string>
+    <string name="q2_option4">Russia</string>
+
+    <string name="q3">Which mountain is the tallest in the world?</string>
+    <string name="q3_option1">K2</string>
+    <string name="q3_option2">Kilimanjaro</string>
+    <string name="q3_option3">Mount Everest</string>
+    <string name="q3_option4">Mont Blanc</string>
+
+    <string name="q4">Which river is the longest in the world?</string>
+    <string name="q4_option1">Nile</string>
+    <string name="q4_option2">Amazon</string>
+    <string name="q4_option3">Mississippi</string>
+    <string name="q4_option4">Yangtze</string>
+
+    <string name="q5">Which desert is the largest in the world?</string>
+    <string name="q5_option1">Gobi</string>
+    <string name="q5_option2">Kalahari</string>
+    <string name="q5_option3">Atacama</string>
+    <string name="q5_option4">Sahara</string>
+
+    <string name="q6">Which country has the most islands in the world?</string>
+    <string name="q6_option1">Indonesia</string>
+    <string name="q6_option2">Sweden</string>
+    <string name="q6_option3">Philippines</string>
+    <string name="q6_option4">Canada</string>
+
+    <string name="q7">What is the capital city of Australia?</string>
+    <string name="q7_option1">Sydney</string>
+    <string name="q7_option2">Melbourne</string>
+    <string name="q7_option3">Canberra</string>
+    <string name="q7_option4">Perth</string>
+
+    <string name="q8">Which of these countries is NOT in Europe?</string>
+    <string name="q8_option1">Kazakhstan</string>
+    <string name="q8_option2">Portugal</string>
+    <string name="q8_option3">Finland</string>
+    <string name="q8_option4">Croatia</string>
+
+    <string name="q9">Which continent is the driest inhabited continent on Earth?</string>
+    <string name="q9_option1">Asia</string>
+    <string name="q9_option2">Africa</string>
+    <string name="q9_option3">South America</string>
+    <string name="q9_option4">Australia</string>
+
+    <string name="q10">Which of these is the smallest country in the world by land area?</string>
+    <string name="q10_option1">Monaco</string>
+    <string name="q10_option2">Vatican City</string>
+    <string name="q10_option3">Nauru</string>
+    <string name="q10_option4">San Marino</string>
+
+    <string name="q11">The Great Barrier Reef is located off the coast of which country?</string>
+    <string name="q11_option1">Brazil</string>
+    <string name="q11_option2">Thailand</string>
+    <string name="q11_option3">Australia</string>
+    <string name="q11_option4">Mexico</string>
+
+    <string name="q12">Which of these cities is located on two continents?</string>
+    <string name="q12_option1">Istanbul</string>
+    <string name="q12_option2">Cairo</string>
+    <string name="q12_option3">Singapore</string>
+    <string name="q12_option4">Panama City</string>
+
+    <string name="q13">Lake Baikal, the deepest lake in the world, is located in which country?</string>
+    <string name="q13_option1">Canada</string>
+    <string name="q13_option2">China</string>
+    <string name="q13_option3">Mongolia</string>
+    <string name="q13_option4">Russia</string>
+
+    <string name="q14">Which ocean is the Mariana Trench located in?</string>
+    <string name="q14_option1">Atlantic Ocean</string>
+    <string name="q14_option2">Pacific Ocean</string>
+    <string name="q14_option3">Indian Ocean</string>
+    <string name="q14_option4">Arctic Ocean</string>
+
+    <string name="q15">Which country is known as the Land of a Thousand Lakes?</string>
+    <string name="q15_option1">Canada</string>
+    <string name="q15_option2">Sweden</string>
+    <string name="q15_option3">Finland</string>
+    <string name="q15_option4">Norway</string>
 </resources>

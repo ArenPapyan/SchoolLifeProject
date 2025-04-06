@@ -3,6 +3,7 @@ package com.example.schoollife;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -10,17 +11,34 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.schoollife.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
-class SignUpActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
 
     EditText emailEditText, usernameEditText, passwordEditText, confirmPasswordEditText;
     Button signupButton;
+    FirebaseAuth mAuth;
 
     TextView  LogInLink;
     CheckBox checkBox;
+    @Override
+    public void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +51,7 @@ class SignUpActivity extends AppCompatActivity {
         confirmPasswordEditText = findViewById(R.id.confirmPasswordEditText);
         signupButton = findViewById(R.id.signupButton);
         LogInLink = findViewById(R.id.LogInLink);
-
+        mAuth = FirebaseAuth.getInstance();
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,45 +69,52 @@ class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(SignUpActivity.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-                if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                    Toast.makeText(SignUpActivity.this, "Invalid email address", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                if (username.equals("admin") && password.equals("1234")) {
-                    Toast.makeText(SignUpActivity.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
-
-                    Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(SignUpActivity.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
-                }
+                mAuth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(SignUpActivity.this, "Account Created",
+                                            Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(getApplicationContext(), LogInActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    // If sign in fails, display a message to the user.
+                                    Toast.makeText(SignUpActivity.this, "Authentication failed.",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
             }
         });
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    passwordEditText.setInputType(InputType.TYPE_CLASS_TEXT);
+                    confirmPasswordEditText.setTransformationMethod(null);
+                    passwordEditText.setTransformationMethod(null);
                 } else {
-                    passwordEditText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    passwordEditText.setTransformationMethod(new PasswordTransformationMethod());
+                    confirmPasswordEditText.setTransformationMethod(new PasswordTransformationMethod());
                 }
-                passwordEditText.setSelection(passwordEditText.getText().length());
+                int position1 = passwordEditText.getSelectionStart();
+                passwordEditText.setSelection(position1);
+                int position2 = confirmPasswordEditText.getSelectionStart();
+                confirmPasswordEditText.setSelection(position2);
             }
         });
+
         LogInLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SignUpActivity.this, LogInActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LogInActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
     }
-
-
-
     public void onSignUpClicked(View view) {
 
     }

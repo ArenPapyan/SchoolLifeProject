@@ -3,65 +3,115 @@ package com.example.schoollife;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import com.example.schoollife.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LogInActivity extends AppCompatActivity {
-    EditText emailEditText, usernameEditText, passwordEditText, confirmPasswordEditText;
+    EditText emailEditText, passwordEditText, confirmPasswordEditText;
     Button loginButton;
 
+    TextView signup;
     CheckBox checkBox;
-    @SuppressLint({"MissingInflatedId", "WrongViewCast"})
+
+    FirebaseAuth mAuth;
+    @SuppressLint("MissingInflatedId")
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
-        checkBox = findViewById(R.id.checkBox);
-        usernameEditText = findViewById(R.id.usernameEditText1);
+        mAuth = FirebaseAuth.getInstance();
+        checkBox  = findViewById(R.id.checkBox);
+        emailEditText = findViewById(R.id.emailEditText);
         passwordEditText = findViewById(R.id.passwordEditText1);
         loginButton = findViewById(R.id.LogInButton);
+        signup = findViewById(R.id.signUpLink);
 
-        Intent intent = new Intent(LogInActivity.this, HomeActivity.class);
-        startActivity(intent);
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LogInActivity.this, SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
 
-       // checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-         //   @Override
-           // public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-             //   if (isChecked) {
-               //     passwordEditText.setInputType(InputType.TYPE_CLASS_TEXT);
-                //} else {
-                  //  passwordEditText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                //}
-                //passwordEditText.setSelection(passwordEditText.getText().length());
-            //}
-        //});
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = emailEditText.getText().toString().trim();
+                String password = passwordEditText.getText().toString().trim();
+
+                // Ստուգել՝ արդյոք դաշտերը դատարկ են
+                if (email.isEmpty()) {
+                    emailEditText.setError("Enter Email");
+                    return;
+                }
+
+                if (password.isEmpty()) {
+                    passwordEditText.setError("Enter Password");
+                    return;
+                }
+                mAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(LogInActivity.this, "LogIn Successful",
+                                            Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    Toast.makeText(LogInActivity.this, "Authentication failed.",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+
+
+            }
+        });
+
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    // Երբ checkbox-ը նշված է, ցույց տալ գաղտնաբառը
+
                     passwordEditText.setTransformationMethod(null);
                 } else {
-                    // Երբ checkbox-ը նշված չէ, թաքցնել գաղտնաբառը
                     passwordEditText.setTransformationMethod(new PasswordTransformationMethod());
                 }
-                // Պահպանել կուրսորի դիրքը
                 int position = passwordEditText.getSelectionStart();
                 passwordEditText.setSelection(position);
             }
         });
+
+
     }
 }

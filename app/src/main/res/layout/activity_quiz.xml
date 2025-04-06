@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".QuizActivity">
+
+
+    <TextView
+        android:id="@+id/question_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="Question goes here"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:id="@+id/options_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/question_text"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/option1_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:text="Option 1"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/option2_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:text="Option 2"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/option3_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:text="Option 3"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/option4_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:text="Option 4"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/next_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/options_layout"
+        android:text="@string/next_button"
+        android:textStyle="bold"
+        android:backgroundTint="@android:color/holo_green_dark" />
+
+</RelativeLayout>

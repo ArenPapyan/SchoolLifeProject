@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#85BDEB"
@@ -15,13 +16,13 @@
         android:src="@drawable/account"></ImageView>
 
     <EditText
-        android:id="@+id/usernameEditText1"
+        android:id="@+id/emailEditText"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginBottom="20dp"
         android:layout_below="@id/account1"
         android:background="@drawable/edittext_bg"
-        android:hint="Username"
+        android:hint="Email"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:textColor="#333333"
@@ -31,13 +32,14 @@
         android:drawableLeft="@drawable/ic_username"
         android:drawablePadding="12dp"
         android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp" />
+        android:layout_marginEnd="10dp"
+        tools:ignore="TextFields" />
 
     <EditText
         android:id="@+id/passwordEditText1"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_below="@id/usernameEditText1"
+        android:layout_below="@id/emailEditText"
         android:layout_marginBottom="20dp"
         android:background="@drawable/edittext_bg"
         android:hint="Password"
@@ -78,14 +80,15 @@
         android:id="@+id/signUpLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Don't have an account? Sign Up"
-        android:textColor="#0C34A9"
-        android:textSize="16sp"
         android:layout_below="@id/LogInButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:clickable="true"
         android:focusable="true"
-        android:onClick="onSignUpClicked"/>
+        android:minHeight="48dp"
+        android:text="Don't have an account? Sign Up"
+        android:textColor="#0C34A9"
+        android:textSize="16sp"
+        tools:ignore="HardcodedText" />
 
 </RelativeLayout>

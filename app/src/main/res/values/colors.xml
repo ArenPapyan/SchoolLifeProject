@@ -2,4 +2,18 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="primary">#3F51B5</color>
+    <color name="primary_dark">#303F9F</color>
+    <color name="accent">#FF4081</color>
+
+    <color name="dark_text">#212121</color>
+    <color name="button_text">#FFFFFF</color>
+
+    <color name="button_default">#3F51B5</color>
+    <color name="button_correct">#4CAF50</color>
+    <color name="button_incorrect">#F44336</color>
+
+    <color name="indicator_active">#3F51B5</color>
+    <color name="indicator_inactive">#BDBDBD</color>
+    <color name="indicator_complete">#4CAF50</color>
 </resources>
