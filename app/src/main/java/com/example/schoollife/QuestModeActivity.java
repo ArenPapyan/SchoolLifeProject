@@ -1,220 +1,299 @@
 package com.example.schoollife;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+
+import com.example.schoollife.HomeActivity;
+import com.example.schoollife.Question;
+import com.example.schoollife.R;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.snackbar.Snackbar;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class QuestModeActivity extends AppCompatActivity {
-
-    private TextView storyTextView;
+    // UI components
     private TextView questionTextView;
-    private Button option1Button;
-    private Button option2Button;
-    private Button option3Button;
-    private Button option4Button;
-    private ImageView storyImageView;
+    private TextView rankTextView;
+    private MaterialButton answerAButton;
+    private MaterialButton answerBButton;
+    private MaterialButton answerCButton;
+    private MaterialButton restartButton;
+    private MaterialButton homeButton;
+    private CardView questionCardView;
+    private TextView resultTextView;
 
-    // Քարտեզ, որը պահում է բոլոր քվեստային հանգույցները
-    private Map<String, QuestNode> questNodes;
-
-    // Ընթացիկ հանգույցի ID
-    private String currentNodeId;
-
-    // Խաղացողի բնութագրերը/վիճակագրությունը
-    private int playerHealth = 100;
-    private int playerGold = 0;
-    private int playerXP = 0;
-    private List<String> playerInventory = new ArrayList<>();
+    // Game data
+    private List<Question> questions;
+    private int currentQuestionIndex = 0;
+    private int currentRankIndex = 0;
+    private String[] ranks = {"Private", "Corporal", "Junior Sergeant", "Sergeant", "Senior Sergeant",
+            "Senior", "Non-commissioned Officer", "Lieutenant", "Senior Lieutenant"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_quest);
 
-        // Ինիցիալիզացնում ենք UI տարրերը
-        storyTextView = findViewById(R.id.story_text);
-        questionTextView = findViewById(R.id.question_text);
-        option1Button = findViewById(R.id.option1_button);
-        option2Button = findViewById(R.id.option2_button);
-        option3Button = findViewById(R.id.option3_button);
-        option4Button = findViewById(R.id.option4_button);
-        storyImageView = findViewById(R.id.story_image);
+        // Initialize UI components
+        questionTextView = findViewById(R.id.questionTextView);
+        rankTextView = findViewById(R.id.rankTextView);
+        answerAButton = findViewById(R.id.answerAButton);
+        answerBButton = findViewById(R.id.answerBButton);
+        answerCButton = findViewById(R.id.answerCButton);
+        restartButton = findViewById(R.id.restartButton);
+        homeButton = findViewById(R.id.homeButton);
+        questionCardView = findViewById(R.id.questionCardView);
+        resultTextView = findViewById(R.id.resultTextView);
 
-        // Սահմանում ենք կոճակների գործողությունները
-        option1Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                processChoice(0);
-            }
-        });
+        // Set up button click listeners
+        answerAButton.setOnClickListener(v -> processAnswer(0));
+        answerBButton.setOnClickListener(v -> processAnswer(1));
+        answerCButton.setOnClickListener(v -> processAnswer(2));
+        restartButton.setOnClickListener(v -> restartGame());
+        homeButton.setOnClickListener(v -> goToHomePage());
 
-        option2Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                processChoice(1);
-            }
-        });
-
-        option3Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                processChoice(2);
-            }
-        });
-
-        option4Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                processChoice(3);
-            }
-        });
-
-        // Ստեղծում ենք քվեստային հանգույցները
-        initializeQuestNodes();
-
-        // Սկսում ենք առաջին հանգույցից
-        currentNodeId = "start";
-        displayCurrentNode();
+        // Initialize game data
+        initializeQuestions();
+        startGame();
     }
 
-    private void initializeQuestNodes() {
-        questNodes = new HashMap<>();
+    private void initializeQuestions() {
+        questions = new ArrayList<>();
 
-        // Ստեղծում ենք մի քանի հանգույցներ պատմության համար
+        // 1. Հարց
+        questions.add(new Question(
+                "You have discovered enemy positions during a combat mission, what will you do?",
+                new String[]{
+                        "Report to the commander immediately and await instructions",
+                        "You will begin reconnaissance without reporting",
+                        "You will attack independently, using the element of surprise"
+                },
+                new int[]{1, 0, -1} // 1: պաշտոնը բարձրացնել, 0: նույնը թողնել, -1: իջեցնել
+        ));
 
-        // Սկզբնական հանգույց
-        QuestNode startNode = new QuestNode();
-        startNode.storyText = "Դուք արթնանում եք մի մութ անտառում: Ձեր շուրջը լսվում են տարօրինակ ձայներ: Դուք չեք հիշում, թե ինչպես եք հայտնվել այստեղ:";
-        startNode.question = "Ի՞նչ եք անում:";
-        startNode.options = new String[]{
-                "Փորձում եք հիշել, թե ինչ է պատահել",
-                "Նայում եք շուրջը՝ փորձելով գտնել որևէ արահետ",
-                "Ձայն եք տալիս՝ հուսալով, որ ինչ-որ մեկը կլսի",
-                "Որոնում եք որևէ զենք կամ գործիք"
-        };
-        startNode.nextNodeIds = new String[]{"memory", "path", "call", "search"};
-        startNode.imageResourceId = R.drawable.forest_dark; // Պետք է ունենալ այս նկարը ռեսուրսներում
-        questNodes.put("start", startNode);
+        // 2. Հարց
+        questions.add(new Question(
+                "Your comrade is injured during combat, what will you do?",
+                new String[]{
+                        "You will stop the combat and immediately try to help him",
+                        "You will ensure safety, then provide first aid and report",
+                        "You will continue the combat with the intention of providing assistance later"
+                },
+                new int[]{0, 1, -1}
+        ));
 
-        // Մի քանի հաջորդ հանգույցներ
 
-        // Հիշողության հանգույց
-        QuestNode memoryNode = new QuestNode();
-        memoryNode.storyText = "Դուք փորձում եք կենտրոնանալ: Ինչ-որ պատկերներ են գալիս ձեր մտքին: Հիշում եք, որ եկել էիք այս անտառը հերբեր հավաքելու համար, բայց ինչ-որ բան կարծես սխալ գնաց: Ձեր գլուխը ցավում է:";
-        memoryNode.question = "Ի՞նչ եք անում հիմա:";
-        memoryNode.options = new String[]{
-                "Շարունակում եք փորձել հիշել՝ հուսալով, որ կարևոր մանրամասներ կվերադառնան",
-                "Փորձում եք գտնել ձեր հերբերի պայուսակը",
-                "Հետևում եք ձեր ենթադրյալ ճանապարհին դեպի անտառ",
-                "Նստում եք հանգստանալու, քանի որ ձեր գլուխը ցավում է"
-        };
-        memoryNode.nextNodeIds = new String[]{"deep_memory", "herb_bag", "forest_path", "rest"};
-        memoryNode.imageResourceId = R.drawable.memory_flash; // Պետք է ունենալ այս նկարը ռեսուրսներում
-        questNodes.put("memory", memoryNode);
+        questions.add(new Question(
+                "You noticed that one of your unit members has stolen ammunition, what will you do?",
+                new String[]{
+                        "You will report to the commander",
+                        "You will talk to him personally and offer to return it",
+                        "You will ignore it, avoiding conflict"
+                },
+                new int[]{1, 0, -1}
+        ));
 
-        // Արահետի հանգույց
-        QuestNode pathNode = new QuestNode();
-        pathNode.storyText = "Շրջելով, դուք նկատում եք մի նեղ արահետ ծառերի միջով: Այն կարծես օգտագործված է, բայց ոչ վերջերս: Հեռվից լսվում է ջրի ձայն:";
-        pathNode.question = "Ո՞ր ուղղությամբ եք գնում:";
-        pathNode.options = new String[]{
-                "Հետևում եք արահետին",
-                "Շարժվում եք դեպի ջրի ձայնը",
-                "Մնում եք տեղում և սպասում օգնության",
-                "Փորձում եք մագլցել մոտակա ծառը՝ ավելին տեսնելու համար"
-        };
-        pathNode.nextNodeIds = new String[]{"follow_path", "water_source", "wait", "climb_tree"};
-        pathNode.imageResourceId = R.drawable.forest_path; // Պետք է ունենալ այս նկարը ռեսուրսներում
-        questNodes.put("path", pathNode);
+        questions.add(new Question(
 
-        // Այլ հանգույցներ... Իրական ծրագրում այստեղ կավելացնեք բոլոր հանգույցները
+                "During combat duty, your partner asks you to replace him because he is feeling unwell, what will you do?",
+                new String[]{
+                        "You will replace him and then report the situation to the commander",
+                        "You will replace him, but not report",
+                        "You will refuse, citing a violation of the regulations"
+                },
+                new int[]{1, -1, 0}
+        ));
 
-        // Օրինակ՝ հերբերի պայուսակի հանգույց
-        QuestNode herbBagNode = new QuestNode();
-        herbBagNode.storyText = "Որոնելով շուրջը, դուք գտնում եք ձեր պայուսակը: Այն մասամբ բաց է, և մի քանի հերբեր ցրված են: Ինչ-որ բան կարծես թափել է պարունակությունը:";
-        herbBagNode.question = "Ի՞նչ եք անում:";
-        herbBagNode.options = new String[]{
-                "Հավաքում եք հերբերը և ուսումնասիրում պայուսակը",
-                "Փնտրում եք հետքեր շրջակայքում",
-                "Ստուգում եք՝ արդյոք ինչ-որ անձնական իրեր պակասում են",
-                "Օգտագործում եք հերբերը ձեր գլխացավը մեղմելու համար"
-        };
-        herbBagNode.nextNodeIds = new String[]{"examine_bag", "search_tracks", "check_items", "use_herbs"};
-        herbBagNode.imageResourceId = R.drawable.herb_bag; // Պետք է ունենալ այս նկարը ռեսուրսներում
-        questNodes.put("herb_bag", herbBagNode);
+        questions.add(new Question(
+                "The commander gives you a task that you think is dangerous and poorly planned, what will you do?",
+                new String[]{
+                        "You will carry out the task without asking questions",
+                        "You will refuse to carry out the task",
+                        "You will present your concerns and suggest alternative solutions"
+                },
+                new int[]{0, -1, 1}
+        ));
+
+        questions.add(new Question(
+                "During military operations, you discover civilians who may be in danger, what will you do?",
+                new String[]{
+                        "You will report to the command and await instructions",
+                        "You will continue the mission, ignoring the civilians",
+                        "You will try to evacuate them yourself"
+                },
+                new int[]{1, -1, 0}
+        ));
+
+        questions.add(new Question(
+                "You notice that your comrade often drinks alcohol before duty, what will you do?",
+                new String[]{
+                        "You will talk to him about the problem and offer help",
+                        "You will report it to higher command",
+                        "You will ignore it as long as it does not interfere with his service"
+                },
+                new int[]{0, 1, -1}
+        ));
+
+        questions.add(new Question(
+                "During a combat mission, you receive conflicting orders from different commanders, what will you do?",
+                new String[]{
+                        "You will carry out the first order you receive",
+                        "You will report the situation to the higher command and wait for clarification",
+                        "You will choose the order that you think is more correct"
+                },
+                new int[]{-1, 1, 0}
+        ));
+
+        questions.add(new Question(
+                "During combat operations, you have discovered a wounded enemy soldier, what will you do?",
+                new String[]{
+                        "You will report and provide first aid",
+                        "Ignore and continue the mission",
+                        "You will take a prisoner, but will not provide assistance"
+                },
+                new int[]{1, -1, 0}
+        ));
+
+        questions.add(new Question(
+                "Your commander makes a decision that you disagree with, but it doesn't directly endanger anyone, what will you do?",
+                new String[]{
+                        "You will follow orders, but later express your opinion in a private conversation",
+                        "You will openly criticize the decision in front of the other soldiers",
+                        "You will refuse to carry out the order"
+                },
+                new int[]{1, -1, -1}
+        ));
     }
 
-    private void displayCurrentNode() {
-        QuestNode currentNode = questNodes.get(currentNodeId);
+    private void startGame() {
+        currentQuestionIndex = 0;
+        currentRankIndex = 0;
+        updateRankDisplay();
+        displayQuestion(currentQuestionIndex);
 
-        if (currentNode != null) {
-            // Ցուցադրում ենք պատմությունը և հարցը
-            storyTextView.setText(currentNode.storyText);
-            questionTextView.setText(currentNode.question);
+        // Սկզբում թաքցնում ենք արդյունքը և վերսկսման/տուն կոճակները
+        resultTextView.setVisibility(View.GONE);
+        restartButton.setVisibility(View.GONE);
+        homeButton.setVisibility(View.GONE);
 
-            // Ցուցադրում ենք ընտրության տարբերակները
-            option1Button.setText(currentNode.options[0]);
-            option2Button.setText(currentNode.options[1]);
+        // Ցուցադրում ենք հարցը և պատասխանների կոճակները
+        questionCardView.setVisibility(View.VISIBLE);
+        answerAButton.setVisibility(View.VISIBLE);
+        answerBButton.setVisibility(View.VISIBLE);
+        answerCButton.setVisibility(View.VISIBLE);
+    }
 
-            // Եթե կան 3-րդ և 4-րդ տարբերակներ, ցուցադրում ենք դրանք, հակառակ դեպքում թաքցնում ենք կոճակները
-            if (currentNode.options.length > 2) {
-                option3Button.setVisibility(View.VISIBLE);
-                option3Button.setText(currentNode.options[2]);
-            } else {
-                option3Button.setVisibility(View.GONE);
-            }
+    private void displayQuestion(int questionIndex) {
+        if (questionIndex < questions.size()) {
+            Question currentQuestion = questions.get(questionIndex);
+            questionTextView.setText(currentQuestion.getQuestionText());
+            answerAButton.setText(currentQuestion.getAnswers()[0]);
+            answerBButton.setText(currentQuestion.getAnswers()[1]);
+            answerCButton.setText(currentQuestion.getAnswers()[2]);
 
-            if (currentNode.options.length > 3) {
-                option4Button.setVisibility(View.VISIBLE);
-                option4Button.setText(currentNode.options[3]);
-            } else {
-                option4Button.setVisibility(View.GONE);
-            }
-
-            // Ցուցադրում ենք նկարը, եթե այն սահմանված է
-            if (currentNode.imageResourceId != 0) {
-                storyImageView.setVisibility(View.VISIBLE);
-                storyImageView.setImageResource(currentNode.imageResourceId);
-            } else {
-                storyImageView.setVisibility(View.GONE);
-            }
+            // Անիմացիա հարցի համար
+            questionCardView.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in));
+        } else {
+            endGame();
         }
     }
 
-    private void processChoice(int choiceIndex) {
-        QuestNode currentNode = questNodes.get(currentNodeId);
+    private void processAnswer(int answerIndex) {
+        Question currentQuestion = questions.get(currentQuestionIndex);
+        int rankChange = currentQuestion.getResults()[answerIndex];
 
-        if (currentNode != null && choiceIndex < currentNode.nextNodeIds.length) {
-            // Ստանում ենք հաջորդ հանգույցի ID-ն ընտրված տարբերակի համար
-            String nextNodeId = currentNode.nextNodeIds[choiceIndex];
+        // Փոխում ենք կոչումը
+        currentRankIndex += rankChange;
 
-            // Թարմացնում ենք ընթացիկ հանգույցը
-            currentNodeId = nextNodeId;
-
-            // Ցուցադրում ենք նոր հանգույցը
-            displayCurrentNode();
-
-            // Այստեղ կարող եք նաև կատարել խաղացողի բնութագրերի փոփոխություններ,
-            // կախված նրանց ընտրությունից
+        // Ստուգում ենք սահմանները
+        if (currentRankIndex < 0) {
+            currentRankIndex = 0;
+        } else if (currentRankIndex >= ranks.length) {
+            currentRankIndex = ranks.length - 1;
         }
+
+        updateRankDisplay();
+
+        // Ցուցադրում ենք հաջորդ հարցը կամ ավարտում ենք խաղը
+        currentQuestionIndex++;
+
+        // Ցույց ենք տալիս Snackbar՝ կոչման փոփոխության մասին
+        String message;
+        int color;
+
+        if (rankChange > 0) {
+            message = "Congratulations. Your rank has been raised.";
+            color = getResources().getColor(R.color.success_green);
+        } else if (rankChange < 0) {
+            message = "Your rank has been lowered.";
+            color = getResources().getColor(R.color.error_red);
+        } else {
+            message = "Your title remained the same.";
+            color = getResources().getColor(R.color.neutral_yellow);
+        }
+
+        Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT);
+        View snackbarView = snackbar.getView();
+        snackbarView.setBackgroundColor(color);
+        snackbar.show();
+
+        // Անիմացիա պատասխանից հետո
+        questionCardView.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_out));
+
+        // Կարճ դադարից հետո ցուցադրում ենք հաջորդ հարցը
+        questionCardView.postDelayed(() -> displayQuestion(currentQuestionIndex), 500);
     }
 
-    // Քվեստային հանգույցի դաս
-    private class QuestNode {
-        public String storyText;        // Պատմության տեքստը
-        public String question;         // Հարցը
-        public String[] options;        // Ընտրության տարբերակները
-        public String[] nextNodeIds;    // Հաջորդ հանգույցների ID-ները, համապատասխանելով տարբերակներին
-        public int imageResourceId = 0; // Պատկերի ռեսուրսի ID
+    private void updateRankDisplay() {
+        rankTextView.setText("\n" + "Current title." + ranks[currentRankIndex]);
+    }
 
-        // Կարող եք ավելացնել լրացուցիչ դաշտեր՝ էֆեկտներ, պահանջներ և այլն
-        public Map<String, Integer> statChanges; // Բնութագրերի փոփոխություններ (օր․՝ "health", -10)
-        public Map<String, Boolean> requirements; // Պահանջներ այս հանգույցը ցուցադրելու համար
+    private void endGame() {
+        // Թաքցնում ենք հարցը և պատասխանների կոճակները
+        questionCardView.setVisibility(View.GONE);
+        answerAButton.setVisibility(View.GONE);
+        answerBButton.setVisibility(View.GONE);
+        answerCButton.setVisibility(View.GONE);
+
+        // Ցուցադրում ենք արդյունքը և վերսկսման/տուն կոճակները
+        resultTextView.setVisibility(View.VISIBLE);
+        restartButton.setVisibility(View.VISIBLE);
+        homeButton.setVisibility(View.VISIBLE);
+
+        // Ձևավորում ենք արդյունքի հաղորդագրությունը
+        String resultMessage;
+        if (currentRankIndex >= 7) { // Lieutenant or above
+            resultMessage = "Congratulations! You have achieved the rank of " + ranks[currentRankIndex] +
+                    ". You have demonstrated excellent leadership skills.";
+
+        } else if (currentRankIndex >= 4) { // Sergeant Major and above
+            resultMessage = "Good result! You have reached the rank of " + ranks[currentRankIndex] +
+                    ". Keep up the good work.";
+        } else {
+            resultMessage = "Your final rank is " + ranks[currentRankIndex] +
+                    ". Try again for better results.";
+        }
+
+        resultTextView.setText(resultMessage);
+        resultTextView.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in));
+    }
+
+    private void restartGame() {
+        startGame();
+    }
+
+    private void goToHomePage() {
+        // Այստեղ պետք է իրականացնել տրամաբանությունը HomeActivity-ին անցնելու համար
+        // Օրինակ՝
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

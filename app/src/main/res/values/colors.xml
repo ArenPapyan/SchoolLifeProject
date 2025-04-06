@@ -16,4 +16,16 @@
     <color name="indicator_active">#3F51B5</color>
     <color name="indicator_inactive">#BDBDBD</color>
     <color name="indicator_complete">#4CAF50</color>
+
+    <color name="primary_color">#3F51B5</color>
+    <color name="primary_light">#C5CAE9</color>
+    <color name="accent_color">#FFC107</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="background_color">#F5F5F5</color>
+    <color name="button_secondary">#5C6BC0</color>
+    <color name="button_tertiary">#7986CB</color>
+    <color name="success_green">#4CAF50</color>
+    <color name="error_red">#F44336</color>
+    <color name="neutral_yellow">#FFC107</color>
 </resources>

@@ -2,29 +2,24 @@ package com.example.schoollife;
 
 public class Question {
     private String questionText;
-    private String[] options;
-    private int correctAnswerIndex;
+    private String[] answers;
+    private int[] results;
 
-    // Կոնստրուկտոր
-    public Question(String questionText, String option1, String option2, String option3, String option4, int correctAnswerIndex) {
+    public Question(String questionText, String[] answers, int[] results) {
         this.questionText = questionText;
-        this.options = new String[]{option1, option2, option3, option4};
-        this.correctAnswerIndex = correctAnswerIndex;
+        this.answers = answers;
+        this.results = results;
     }
 
-    // Getters
     public String getQuestionText() {
         return questionText;
     }
 
-    public String getOption(int index) {
-        if (index >= 0 && index < options.length) {
-            return options[index];
-        }
-        return "";
+    public String[] getAnswers() {
+        return answers;
     }
 
-    public int getCorrectAnswerIndex() {
-        return correctAnswerIndex;
+    public int[] getResults() {
+        return results;
     }
 }

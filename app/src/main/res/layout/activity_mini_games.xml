@@ -1,84 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".HomeActivity"
-    android:background="#5396C3">
+    android:padding="16dp">
 
-    <LinearLayout
+    <GridLayout
+        android:id="@+id/gridLayout"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:background="#FFFFFF">
+        android:layout_height="match_parent"
+        android:rowCount="3"
+        android:columnCount="3">
 
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/account">
-        </ImageView>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="">
-        </TextView>
-    </LinearLayout>
+        <Button
+            android:id="@+id/button1"
+            style="@style/TicTacToeButton"
+            android:contentDescription="Button 1" />
+        <Button
+            android:id="@+id/button2"
+            style="@style/TicTacToeButton"
+            android:contentDescription="Button 2" />
+        <Button
+            android:id="@+id/button3"
+            style="@style/TicTacToeButton"
+            android:contentDescription="Button 3" />
+        <Button
+            android:id="@+id/button4"
+            style="@style/TicTacToeButton"
+            android:contentDescription="Button 4" />
+        <Button
+            android:id="@+id/button5"
+            style="@style/TicTacToeButton"
+            android:contentDescription="Button 5" />
+        <Button
+            android:id="@+id/button6"
+            style="@style/TicTacToeButton"
+            android:contentDescription="Button 6" />
+        <Button
+            android:id="@+id/button7"
+            style="@style/TicTacToeButton"
+            android:contentDescription="Button 7" />
+        <Button
+            android:id="@+id/button8"
+            style="@style/TicTacToeButton"
+            android:contentDescription="Button 8" />
+        <Button
+            android:id="@+id/button9"
+            style="@style/TicTacToeButton"
+            android:contentDescription="Button 9" />
+    </GridLayout>
 
     <Button
-        android:id="@+id/btn2"
-        android:layout_width="match_parent"
+        android:id="@+id/resetButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Basketball"
-        android:layout_marginTop="160dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:textSize="25dp"
-        android:backgroundTint="#3561D0"/>
-
-    <Button
-        android:id="@+id/btn3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Test"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:textSize="25dp"
-        android:backgroundTint="#3561D0"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ev ayln"
-        android:textSize="25dp">
-    </TextView>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="280dp"
-        android:background="#FFFFFF">
-
-
-        <TextView
-            android:layout_width="70dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="20dp"
-            android:text="Mini Games"
-            android:textColor="#1829B1"
-            android:textSize="20dp"
-            android:textStyle="bold"></TextView>
-
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="90dp"
-            android:src="@drawable/home"
-            app:tint="#5396C3"></ImageView>
-
-    </LinearLayout>
-</LinearLayout>
+        android:text="Reset"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+</RelativeLayout>

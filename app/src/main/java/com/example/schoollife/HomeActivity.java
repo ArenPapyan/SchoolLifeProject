@@ -29,8 +29,9 @@ public class HomeActivity extends AppCompatActivity {
         Button Quest = findViewById(R.id.btn2);
         Button quiz = findViewById(R.id.btnQuiz);
         FirebaseAuth auth = FirebaseAuth.getInstance();
-        TextView LogOut = findViewById(R.id.LogOut);
         FirebaseUser user = auth.getCurrentUser();
+        TextView miniGames = findViewById(R.id.miniGames);
+        TextView settings = findViewById(R.id.settings);
         TextView textView = findViewById(R.id.UserDetails);
         Quest.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,11 +54,21 @@ public class HomeActivity extends AppCompatActivity {
         }else{
             textView.setText(user.getEmail());
         }
-        LogOut.setOnClickListener(new View.OnClickListener() {
+
+        miniGames.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getApplicationContext(), LogInActivity.class);
+                Intent intent = new Intent(HomeActivity.this, MiniGamesActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
                 startActivity(intent);
                 finish();
             }

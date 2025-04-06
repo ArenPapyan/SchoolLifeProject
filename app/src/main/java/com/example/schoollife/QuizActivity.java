@@ -1,4 +1,3 @@
-// MainActivity.java ֆայլը թարմացված տարբերակով
 package com.example.schoollife;
 
 import android.content.DialogInterface;
