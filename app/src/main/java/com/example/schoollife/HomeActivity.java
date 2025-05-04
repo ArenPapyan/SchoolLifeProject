@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -33,6 +34,31 @@ public class HomeActivity extends AppCompatActivity {
         TextView miniGames = findViewById(R.id.miniGames);
         TextView settings = findViewById(R.id.settings);
         TextView textView = findViewById(R.id.UserDetails);
+
+        // Optional: Add card click listeners if you want the entire cards to be clickable
+        CardView questCard = findViewById(R.id.questCard);
+        CardView quizCard = findViewById(R.id.quizCard);
+
+        if (questCard != null) {
+            questCard.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(HomeActivity.this, QuestModeActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
+
+        if (quizCard != null) {
+            quizCard.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(HomeActivity.this, QuizActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
+
         Quest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,6 +66,7 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         quiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,11 +74,12 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         if (user == null){
             Intent intent = new Intent(getApplicationContext(), LogInActivity.class);
             startActivity(intent);
             finish();
-        }else{
+        } else {
             textView.setText(user.getEmail());
         }
 
@@ -64,6 +92,7 @@ public class HomeActivity extends AppCompatActivity {
                 finish();
             }
         });
+
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,5 +102,33 @@ public class HomeActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        // Optional: Add container click listeners for the new bottom navigation if they exist
+        View miniGamesContainer = findViewById(R.id.miniGamesContainer);
+        View settingsContainer = findViewById(R.id.settingsContainer);
+
+        if (miniGamesContainer != null) {
+            miniGamesContainer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    FirebaseAuth.getInstance().signOut();
+                    Intent intent = new Intent(HomeActivity.this, MiniGamesActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+        }
+
+        if (settingsContainer != null) {
+            settingsContainer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    FirebaseAuth.getInstance().signOut();
+                    Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+        }
     }
 }
