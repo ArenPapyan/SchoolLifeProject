@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="100dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Cup body -->
+    <path
+        android:fillColor="#FFD700"
+        android:pathData="M7,4h10v5c0,2.76 -2.24,5 -5,5s-5,-2.24 -5,-5v-5z" />
+
+    <!-- Left handle -->
+    <path
+        android:fillColor="#FFD700"
+        android:pathData="M4,4h2v2c0,1.1 -0.9,2 -2,2s-2,-0.9 -2,-2v-1c0,-0.55 0.45,-1 1,-1z" />
+
+    <!-- Right handle -->
+    <path
+        android:fillColor="#FFD700"
+        android:pathData="M20,4h-2v2c0,1.1 0.9,2 2,2s2,-0.9 2,-2v-1c0,-0.55 -0.45,-1 -1,-1z" />
+
+    <!-- Stem -->
+    <path
+        android:fillColor="#DAA520"
+        android:pathData="M10,14h4v2h-4z" />
+
+    <!-- Base -->
+    <path
+        android:fillColor="#A0522D"
+        android:pathData="M8,17h8v2H8z" />
+</vector>

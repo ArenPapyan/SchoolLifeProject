@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Միջուկի շրջան -->
+    <path
+        android:fillColor="#3F51B5"
+        android:pathData="M12,12m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0"/>
+
+    <!-- Առաջին էլեկտրոնային ուղեծիր -->
+    <path
+        android:strokeColor="#FF5722"
+        android:strokeWidth="0.5"
+        android:pathData="M12,12m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"/>
+
+    <!-- Երկրորդ էլեկտրոնային ուղեծիր -->
+    <path
+        android:strokeColor="#FF9800"
+        android:strokeWidth="0.5"
+        android:pathData="M7,12a5,7 0,1 0,10 0a5,7 0,1 0,-10 0z"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"/>
+
+    <!-- Երրորդ էլեկտրոնային ուղեծիր -->
+    <path
+        android:strokeColor="#8BC34A"
+        android:strokeWidth="0.5"
+        android:pathData="M12,7a7,5 0,1 0,0 10a7,5 0,1 0,0 -10z"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"/>
+
+    <!-- Առաջին էլեկտրոն -->
+    <path
+        android:fillColor="#FF5722"
+        android:pathData="M16,12m-0.8,0a0.8,0.8 0,1 1,1.6 0a0.8,0.8 0,1 1,-1.6 0"/>
+
+    <!-- Երկրորդ էլեկտրոն -->
+    <path
+        android:fillColor="#FF9800"
+        android:pathData="M12,5m-0.8,0a0.8,0.8 0,1 1,1.6 0a0.8,0.8 0,1 1,-1.6 0"/>
+
+    <!-- Երրորդ էլեկտրոն -->
+    <path
+        android:fillColor="#8BC34A"
+        android:pathData="M7,14m-0.8,0a0.8,0.8 0,1 1,1.6 0a0.8,0.8 0,1 1,-1.6 0"/>
+
+    <!-- Չորրորդ էլեկտրոն -->
+    <path
+        android:fillColor="#FF5722"
+        android:pathData="M8,12m-0.8,0a0.8,0.8 0,1 1,1.6 0a0.8,0.8 0,1 1,-1.6 0"/>
+
+    <!-- Հինգերորդ էլեկտրոն -->
+    <path
+        android:fillColor="#FF9800"
+        android:pathData="M12,19m-0.8,0a0.8,0.8 0,1 1,1.6 0a0.8,0.8 0,1 1,-1.6 0"/>
+
+    <!-- Վեցերորդ էլեկտրոն -->
+    <path
+        android:fillColor="#8BC34A"
+        android:pathData="M17,14m-0.8,0a0.8,0.8 0,1 1,1.6 0a0.8,0.8 0,1 1,-1.6 0"/>
+
+    <!-- Միջուկի մեջ պրոտոններ և նեյտրոններ -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M11.7,11.7m-0.4,0a0.4,0.4 0,1 1,0.8 0a0.4,0.4 0,1 1,-0.8 0"/>
+
+    <path
+        android:fillColor="#E1F5FE"
+        android:pathData="M12.3,12.3m-0.4,0a0.4,0.4 0,1 1,0.8 0a0.4,0.4 0,1 1,-0.8 0"/>
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M12.3,11.7m-0.4,0a0.4,0.4 0,1 1,0.8 0a0.4,0.4 0,1 1,-0.8 0"/>
+
+    <path
+        android:fillColor="#E1F5FE"
+        android:pathData="M11.7,12.3m-0.4,0a0.4,0.4 0,1 1,0.8 0a0.4,0.4 0,1 1,-0.8 0"/>
+</vector>

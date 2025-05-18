@@ -25,7 +25,7 @@ public class LogInActivity extends AppCompatActivity {
     EditText emailEditText, passwordEditText, confirmPasswordEditText;
     Button loginButton;
 
-    TextView signup;
+    TextView signup, forgotPasswordLink;
     CheckBox checkBox;
 
     FirebaseAuth mAuth;
@@ -52,11 +52,21 @@ public class LogInActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.passwordEditText1);
         loginButton = findViewById(R.id.LogInButton);
         signup = findViewById(R.id.signUpLink);
+        forgotPasswordLink = findViewById(R.id.forgotPasswordLink);
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LogInActivity.this, SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // Ավելացվել է Forgot Password հղման իրադարձության մշակիչը
+        forgotPasswordLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LogInActivity.this, ForgotPasswordActivity.class);
                 startActivity(intent);
             }
         });
@@ -80,17 +90,22 @@ public class LogInActivity extends AppCompatActivity {
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(LogInActivity.this, "LogIn Successful",
-                                            Toast.LENGTH_SHORT).show();
+                            public void onComplete(@NonNull Task<AuthResult> task) {if (task.isSuccessful()) {
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                if (user != null && user.isEmailVerified()) {
+                                    Toast.makeText(LogInActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                                     startActivity(intent);
                                     finish();
                                 } else {
-                                    Toast.makeText(LogInActivity.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LogInActivity.this, "Please verify your email before logging in.", Toast.LENGTH_LONG).show();
+                                    FirebaseAuth.getInstance().signOut(); // Sign out unverified user
                                 }
+                            }
+                            else {
+                                Toast.makeText(LogInActivity.this, "Authentication failed.",
+                                        Toast.LENGTH_SHORT).show();
+                            }
                             }
                         });
 

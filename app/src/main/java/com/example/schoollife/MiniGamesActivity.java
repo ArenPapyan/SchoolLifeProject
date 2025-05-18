@@ -1,5 +1,6 @@
 package com.example.schoollife;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -7,18 +8,31 @@ import android.widget.GridLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 
 public class MiniGamesActivity extends AppCompatActivity {
 
     private Button[][] buttons = new Button[3][3];
     private boolean playerXTurn = true;
     private int roundCount = 0;
+    private ConstraintLayout BTH;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mini_games);
 
+        BTH = findViewById(R.id.backToHomeLayout);
+
+        BTH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MiniGamesActivity.this, MiniGamesListActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         GridLayout gridLayout = findViewById(R.id.gridLayout);
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {

@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -27,18 +28,20 @@ public class SignUpActivity extends AppCompatActivity {
     Button signupButton;
     FirebaseAuth mAuth;
 
-    TextView  LogInLink;
+    TextView LogInLink;
     CheckBox checkBox;
+
     @Override
     public void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
+        if (currentUser != null) {
             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
             finish();
         }
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,12 +77,36 @@ public class SignUpActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(SignUpActivity.this, "Account Created",
-                                            Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), LogInActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    String username = usernameEditText.getText().toString(); // վերցնում ենք username-ը input-ից
+
+                                    if (user != null) {
+                                        // Ավելացնենք username-ը որպես displayName
+                                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                                .setDisplayName(username)
+                                                .build();
+
+                                        user.updateProfile(profileUpdates)
+                                                .addOnCompleteListener(updateTask -> {
+                                                    if (updateTask.isSuccessful()) {
+                                                        user.sendEmailVerification()
+                                                                .addOnCompleteListener(verifyTask -> {
+                                                                    if (verifyTask.isSuccessful()) {
+                                                                        Toast.makeText(SignUpActivity.this, "Verification email sent. Please check your email.", Toast.LENGTH_LONG).show();
+                                                                    } else {
+                                                                        Toast.makeText(SignUpActivity.this, "Failed to send verification email.", Toast.LENGTH_SHORT).show();
+                                                                    }
+                                                                });
+
+                                                        mAuth.signOut(); // Sign out so the user can't log in before verifying
+                                                        Intent intent = new Intent(getApplicationContext(), LogInActivity.class);
+                                                        startActivity(intent);
+                                                        finish();
+                                                    }
+                                                });
+                                    }
+                                }
+                                else {
                                     // If sign in fails, display a message to the user.
                                     Toast.makeText(SignUpActivity.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
@@ -115,6 +142,7 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
     }
+
     public void onSignUpClicked(View view) {
 
     }

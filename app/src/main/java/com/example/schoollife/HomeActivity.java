@@ -34,7 +34,7 @@ public class HomeActivity extends AppCompatActivity {
         TextView miniGames = findViewById(R.id.miniGames);
         TextView settings = findViewById(R.id.settings);
         TextView textView = findViewById(R.id.UserDetails);
-
+        FirebaseUser user1 = FirebaseAuth.getInstance().getCurrentUser();
         // Optional: Add card click listeners if you want the entire cards to be clickable
         CardView questCard = findViewById(R.id.questCard);
         CardView quizCard = findViewById(R.id.quizCard);
@@ -43,7 +43,7 @@ public class HomeActivity extends AppCompatActivity {
             questCard.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(HomeActivity.this, QuestModeActivity.class);
+                    Intent intent = new Intent(HomeActivity.this, QuestListActivity.class);
                     startActivity(intent);
                 }
             });
@@ -53,7 +53,7 @@ public class HomeActivity extends AppCompatActivity {
             quizCard.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(HomeActivity.this, QuizActivity.class);
+                    Intent intent = new Intent(HomeActivity.this, QuizListActivity.class);
                     startActivity(intent);
                 }
             });
@@ -62,7 +62,7 @@ public class HomeActivity extends AppCompatActivity {
         Quest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, QuestModeActivity.class);
+                Intent intent = new Intent(HomeActivity.this, QuestListActivity.class);
                 startActivity(intent);
             }
         });
@@ -70,7 +70,7 @@ public class HomeActivity extends AppCompatActivity {
         quiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, QuizActivity.class);
+                Intent intent = new Intent(HomeActivity.this, QuizListActivity.class);
                 startActivity(intent);
             }
         });
@@ -80,28 +80,11 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         } else {
-            textView.setText(user.getEmail());
+            if (user1 != null) {
+                String username = user.getDisplayName();
+                textView.setText(username);
+            }
         }
-
-        miniGames.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(HomeActivity.this, MiniGamesActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
 
         // Optional: Add container click listeners for the new bottom navigation if they exist
         View miniGamesContainer = findViewById(R.id.miniGamesContainer);
@@ -111,8 +94,7 @@ public class HomeActivity extends AppCompatActivity {
             miniGamesContainer.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    FirebaseAuth.getInstance().signOut();
-                    Intent intent = new Intent(HomeActivity.this, MiniGamesActivity.class);
+                    Intent intent = new Intent(HomeActivity.this, MiniGamesListActivity.class);
                     startActivity(intent);
                     finish();
                 }
@@ -123,7 +105,6 @@ public class HomeActivity extends AppCompatActivity {
             settingsContainer.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    FirebaseAuth.getInstance().signOut();
                     Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
                     startActivity(intent);
                     finish();

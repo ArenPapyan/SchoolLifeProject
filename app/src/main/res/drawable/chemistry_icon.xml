@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Կոլբայի հիմք -->
+    <path
+        android:fillColor="#B2EBF2"
+        android:pathData="M9,19L15,19L15,9L9,9z"
+        android:fillAlpha="0.7"/>
+
+    <!-- Կոլբայի վզիկ -->
+    <path
+        android:fillColor="#B2EBF2"
+        android:pathData="M10.5,9L13.5,9L13.5,7L10.5,7z"
+        android:fillAlpha="0.7"/>
+
+    <!-- Կոլբայի բերան -->
+    <path
+        android:fillColor="#B2EBF2"
+        android:pathData="M10,7L14,7L14,6C14,5.45 13.55,5 13,5L11,5C10.45,5 10,5.45 10,6L10,7z"
+        android:fillAlpha="0.7"/>
+
+    <!-- Կոլբայի կոնտուր -->
+    <path
+        android:strokeColor="#0097A7"
+        android:strokeWidth="0.5"
+        android:pathData="M9,19L15,19L15,9L9,9z"/>
+
+    <path
+        android:strokeColor="#0097A7"
+        android:strokeWidth="0.5"
+        android:pathData="M10.5,9L13.5,9L13.5,7L10.5,7z"/>
+
+    <path
+        android:strokeColor="#0097A7"
+        android:strokeWidth="0.5"
+        android:pathData="M10,7L14,7L14,6C14,5.45 13.55,5 13,5L11,5C10.45,5 10,5.45 10,6L10,7z"/>
+
+    <!-- Հեղուկ կոլբայի մեջ -->
+    <path
+        android:fillColor="#4DD0E1"
+        android:pathData="M9,19L15,19L15,14L9,14z"
+        android:fillAlpha="0.6"/>
+
+    <!-- Պղպջակներ -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M10.5,17.5m-0.8,0a0.8,0.8 0,1 1,1.6 0a0.8,0.8 0,1 1,-1.6 0"
+        android:fillAlpha="0.7"/>
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M12,15.5m-0.6,0a0.6,0.6 0,1 1,1.2 0a0.6,0.6 0,1 1,-1.2 0"
+        android:fillAlpha="0.7"/>
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M11.2,16.3m-0.4,0a0.4,0.4 0,1 1,0.8 0a0.4,0.4 0,1 1,-0.8 0"
+        android:fillAlpha="0.7"/>
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M13.5,16.8m-0.5,0a0.5,0.5 0,1 1,1 0a0.5,0.5 0,1 1,-1 0"
+        android:fillAlpha="0.7"/>
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M12.8,17.5m-0.3,0a0.3,0.3 0,1 1,0.6 0a0.3,0.3 0,1 1,-0.6 0"
+        android:fillAlpha="0.7"/>
+
+    <!-- Բարձրացող պղպջակներ -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M11.3,13m-0.2,0a0.2,0.2 0,1 1,0.4 0a0.2,0.2 0,1 1,-0.4 0"
+        android:fillAlpha="0.5"/>
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M13,13.5m-0.15,0a0.15,0.15 0,1 1,0.3 0a0.15,0.15 0,1 1,-0.3 0"
+        android:fillAlpha="0.5"/>
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M12.5,12.5m-0.25,0a0.25,0.25 0,1 1,0.5 0a0.25,0.25 0,1 1,-0.5 0"
+        android:fillAlpha="0.5"/>
+</vector>

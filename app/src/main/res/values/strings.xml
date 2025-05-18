@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">SchoolLife</string>
-
+    <string name="app_name">EduThinkPlay</string>
     <!-- Quiz Navigation -->
     <string name="next_button">Next</string>
     <string name="restart_button">Restart</string>
