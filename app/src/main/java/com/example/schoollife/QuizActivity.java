@@ -136,6 +136,8 @@ public class QuizActivity extends AppCompatActivity {
         backToHomeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(QuizActivity.this, QuizListActivity.class);
+                startActivity(intent);
                 finish(); // Go back to previous activity
             }
         });
