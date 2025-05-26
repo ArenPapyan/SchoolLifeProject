@@ -49,6 +49,13 @@ public class QuizListActivity extends AppCompatActivity {
                 textView.setText(username);
             }
         }
+        FirebaseUser user2 = FirebaseAuth.getInstance().getCurrentUser();
+        if (user2 != null) {
+            Log.d("QuizList", "User logged in: " + user2.getUid());
+            loadAllQuizScores();
+        } else {
+            Log.d("QuizList", "NO USER LOGGED IN!");
+        }
         try {
             // Initialize score manager
             scoreManager = new QuizScoreManager(this);
@@ -69,8 +76,34 @@ public class QuizListActivity extends AppCompatActivity {
             Log.e("EduThinkPlay", "Error in QuizListActivity: " + e.getMessage());
             e.printStackTrace();
         }
+        loadAllQuizScores();
     }
 
+    private void loadAllQuizScores() {
+        // Example for multiple quizzes - replace with your actual quiz names
+        String[] quizNames = {"Physics", "Chemistry", "Maths", "Geography", "Biology"}; // Your quiz names
+
+        for (String quizName : quizNames) {
+            GameDataManager.getInstance().loadQuizScore(quizName, new GameDataManager.OnDataLoadedListener() {
+                @Override
+                public void onDataLoaded(int percentage) {
+                    // Update UI for this specific quiz
+                    updateQuizUI(quizName, percentage);
+                }
+            });
+        }
+    }
+    private void updateQuizUI(String quizName, int percentage) {
+        // Find your UI elements (replace with your actual IDs)
+        TextView percentageText = findViewById(R.id.quiz1Percentage); // Your method to get correct TextView
+        ProgressBar progressBar = findViewById(R.id.quiz1Progress); // Your method to get correct ProgressBar
+
+        // Update percentage text
+        percentageText.setText(percentage + "%");
+
+        // Update progress bar
+        progressBar.setProgress(percentage);
+    }
     @Override
     protected void onResume() {
         super.onResume();
@@ -128,7 +161,6 @@ public class QuizListActivity extends AppCompatActivity {
         setupQuizCardListener(R.id.quiz4StartButton, GEOGRAPHY);
         setupQuizCardListener(R.id.quiz5StartButton, BIOLOGY);
     }
-
     private void setupQuizCardListener(int buttonId, final String quizType) {
         CardView startButton = findViewById(buttonId);
         if (startButton != null){

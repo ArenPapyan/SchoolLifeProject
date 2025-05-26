@@ -114,7 +114,7 @@
                         android:id="@+id/game1Icon"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/mountain"
+                        android:src="@drawable/tictactoe"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -169,7 +169,7 @@
                         android:id="@+id/game2Icon"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/mountain"
+                        android:src="@drawable/battleship"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -221,7 +221,7 @@
                         android:id="@+id/game3Icon"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/mountain"
+                        android:src="@drawable/snake"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -274,7 +274,7 @@
                         android:id="@+id/game4Icon"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/mountain"
+                        android:src="@drawable/game2048"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 

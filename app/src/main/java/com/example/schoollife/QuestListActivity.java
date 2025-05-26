@@ -290,4 +290,5 @@ public class QuestListActivity extends AppCompatActivity {
             updateBestRankDisplay(textView, bestRank);
         }
     }
+
 }
