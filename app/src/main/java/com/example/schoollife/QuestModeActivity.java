@@ -1033,6 +1033,49 @@ public class QuestModeActivity extends AppCompatActivity {
         endQuest(score, totalTasks);
     }
 
+    private void finishQuestWithDebug(int finalScore, int totalTasks) {
+        // DEBUG: Log what we're sending
+        Log.d("QuestModeActivity", "=== SENDING TO RESULT ===");
+        Log.d("QuestModeActivity", "Final Score: " + finalScore);
+        Log.d("QuestModeActivity", "Total Tasks: " + totalTasks);
+
+        // Get quest type from intent
+        String questType = getIntent().getStringExtra("QUEST_TYPE");
+        int questId = getIntent().getIntExtra("QUEST_ID", 1);
+
+        Log.d("QuestModeActivity", "Quest Type from intent: " + questType);
+        Log.d("QuestModeActivity", "Quest ID from intent: " + questId);
+
+        // If questType is null, map from questId
+        if (questType == null || questType.isEmpty()) {
+            questType = getQuestTypeById(questId);
+            Log.d("QuestModeActivity", "Mapped Quest Type: " + questType);
+        }
+
+        // Calculate percentage to verify
+        int percentage = totalTasks > 0 ? (finalScore * 100) / totalTasks : 0;
+        Log.d("QuestModeActivity", "Calculated percentage: " + percentage + "%");
+        Log.d("QuestModeActivity", "=== END SENDING ===");
+
+        Intent intent = new Intent(this, QuestResultActivity.class);
+        intent.putExtra("SCORE", finalScore);
+        intent.putExtra("TOTAL_TASKS", totalTasks);
+        intent.putExtra("QUEST_TYPE", questType);
+
+        startActivity(intent);
+        finish();
+    }
+
+    private String getQuestTypeById(int questId) {
+        switch (questId) {
+            case 1: return "MILITARY";
+            case 2: return "FOOTBALL";
+            case 3: return "HIKING";
+            case 4: return "SCHOOL";
+            case 5: return "LOVE";
+            default: return "MILITARY";
+        }
+    }
     private void endQuest(int score, int totalTasks) {
         try {
             // Ստեղծում ենք Intent QuestResultActivity-ի համար

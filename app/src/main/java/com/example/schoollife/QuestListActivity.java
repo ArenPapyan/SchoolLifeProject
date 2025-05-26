@@ -19,14 +19,16 @@ import com.example.schoollife.R;
 import com.example.schoollife.SettingsActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class QuestListActivity extends AppCompatActivity {
 
     // UI Elements
     private TextView userDetailsText;
     private CardView headerLayout;
-    private MaterialCardView miniGamesContainer, homeContainer, settingsContainer;
-    private MaterialButton quest1StartButton, quest2StartButton, quest3StartButton,
+    private CardView miniGamesContainer, homeContainer, settingsContainer;
+    private CardView quest1StartButton, quest2StartButton, quest3StartButton,
             quest4StartButton, quest5StartButton;
 
     // Best Score TextViews
@@ -36,14 +38,19 @@ public class QuestListActivity extends AppCompatActivity {
     private ProgressBar quest1Progress, quest2Progress, quest3Progress, quest4Progress, quest5Progress;
     private TextView quest1Percentage, quest2Percentage, quest3Percentage, quest4Percentage, quest5Percentage;
 
-    // SharedPreferences key for storing best scores
-    private static final String PREFS_NAME = "QuestAppPrefs";
-    private static final String BEST_SCORE_KEY_PREFIX = "best_score_quest_";
+    // Add QuestScoreManager
+    private QuestScoreManager scoreManager;
+
+    // Quest type mapping
+    private String[] questTypes = {"MILITARY", "FOOTBALL", "HIKING", "SCHOOL", "LOVE"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quest_list);
+
+        // Initialize score manager
+        scoreManager = new QuestScoreManager(this);
 
         // Initialize UI elements
         initializeViews();
@@ -59,6 +66,21 @@ public class QuestListActivity extends AppCompatActivity {
 
         // Load and display best scores
         loadBestScores();
+
+        FirebaseUser user1 = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+        TextView textView = findViewById(R.id.UserDetails);
+        if (user == null){
+            Intent intent = new Intent(getApplicationContext(), LogInActivity.class);
+            startActivity(intent);
+            finish();
+        } else {
+            if (user1 != null) {
+                String username = user.getDisplayName();
+                textView.setText(username);
+            }
+        }
     }
 
     private void initializeViews() {
@@ -106,70 +128,146 @@ public class QuestListActivity extends AppCompatActivity {
 
     private String getUsernameFromPreferences() {
         // Example implementation
-        return getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
+        return getSharedPreferences("QuestAppPrefs", MODE_PRIVATE)
                 .getString("username", null);
     }
 
     /**
-     * Load the best scores for all quests from SharedPreferences
+     * Load the best ranks for all quests using QuestScoreManager
      * and update the corresponding TextViews
      */
     private void loadBestScores() {
-        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-
-        // Load and display best score for each quest
-        updateBestScoreDisplay(quest1BestScore, prefs.getInt(BEST_SCORE_KEY_PREFIX + 1, 0));
-        updateBestScoreDisplay(quest2BestScore, prefs.getInt(BEST_SCORE_KEY_PREFIX + 2, 0));
-        updateBestScoreDisplay(quest3BestScore, prefs.getInt(BEST_SCORE_KEY_PREFIX + 3, 0));
-        updateBestScoreDisplay(quest4BestScore, prefs.getInt(BEST_SCORE_KEY_PREFIX + 4, 0));
-        updateBestScoreDisplay(quest5BestScore, prefs.getInt(BEST_SCORE_KEY_PREFIX + 5, 0));
+        // Load and display best rank for each quest
+        updateBestRankDisplay(quest1BestScore, scoreManager.getBestRank(questTypes[0])); // MILITARY
+        updateBestRankDisplay(quest2BestScore, scoreManager.getBestRank(questTypes[1])); // FOOTBALL
+        updateBestRankDisplay(quest3BestScore, scoreManager.getBestRank(questTypes[2])); // HIKING
+        updateBestRankDisplay(quest4BestScore, scoreManager.getBestRank(questTypes[3])); // SCHOOL
+        updateBestRankDisplay(quest5BestScore, scoreManager.getBestRank(questTypes[4])); // LOVE
     }
 
     /**
-     * Update the display of a best score TextView
+     * Update the display of a best rank TextView
      * @param textView The TextView to update
-     * @param score The score to display
+     * @param rank The rank to display
      */
-    private void updateBestScoreDisplay(TextView textView, int score) {
-        if (score > 0) {
-            textView.setText("Best score: " + score);
+    private void updateBestRankDisplay(TextView textView, String rank) {
+        if (rank != null && !rank.isEmpty() &&
+                !rank.equals("Private") && !rank.equals("Bench Player") &&
+                !rank.equals("Beginner") && !rank.equals("Struggling Student") &&
+                !rank.equals("Single")) {
+            textView.setText("Best rank: " + rank);
         } else {
-            textView.setText("Best score: Rank 0");
+            textView.setText("Best rank: Not achieved");
         }
     }
 
-    /**
-     * Save a new best score for a quest if it's higher than the existing best score
-     * @param questId The ID of the quest
-     * @param score The new score to save if it's a high score
-     * @return true if the score was saved as a new high score, false otherwise
-     */
-    public boolean saveHighScore(int questId, int score) {
-        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        String key = BEST_SCORE_KEY_PREFIX + questId;
-        int currentBest = prefs.getInt(key, 0);
+    private void startQuestActivity(String questTitle, int questId) {
+        // Navigate to specific quest details/start screen
+        Intent intent = new Intent(this, QuestModeActivity.class);
+        intent.putExtra("QUEST_TITLE", questTitle);
+        intent.putExtra("QUEST_ID", questId);
 
-        // Only save if the new score is higher
-        if (score > currentBest) {
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putInt(key, score);
-            editor.apply();
+        // Add quest type for the score manager
+        String questType = questTypes[questId - 1]; // questId is 1-based, array is 0-based
+        intent.putExtra("QUEST_TYPE", questType);
 
-            // Update the display
-            updateQuestBestScore(questId, score);
-            return true;
+        startActivity(intent);
+    }
+
+    private void setupBottomNavigation() {
+        // Home button navigation
+        homeContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(QuestListActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // Mini Games navigation
+        miniGamesContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(QuestListActivity.this, MiniGamesListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // Settings navigation
+        settingsContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(QuestListActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    // Method to update quest progress (if you still need this functionality)
+    public void updateQuestProgress(int questId, int progressPercentage) {
+        switch (questId) {
+            case 1:
+                if (quest1Progress != null) quest1Progress.setProgress(progressPercentage);
+                if (quest1Percentage != null) quest1Percentage.setText(progressPercentage + "%");
+                break;
+            case 2:
+                if (quest2Progress != null) quest2Progress.setProgress(progressPercentage);
+                if (quest2Percentage != null) quest2Percentage.setText(progressPercentage + "%");
+                break;
+            case 3:
+                if (quest3Progress != null) quest3Progress.setProgress(progressPercentage);
+                if (quest3Percentage != null) quest3Percentage.setText(progressPercentage + "%");
+                break;
+            case 4:
+                if (quest4Progress != null) quest4Progress.setProgress(progressPercentage);
+                if (quest4Percentage != null) quest4Percentage.setText(progressPercentage + "%");
+                break;
+            case 5:
+                if (quest5Progress != null) quest5Progress.setProgress(progressPercentage);
+                if (quest5Percentage != null) quest5Percentage.setText(progressPercentage + "%");
+                break;
         }
-        return false;
+    }
+
+    // If you have any back button handling for this screen:
+    @Override
+    public void onBackPressed() {
+        // You might want custom behavior or just default
+        super.onBackPressed();
     }
 
     /**
-     * Update the best score display for a specific quest
-     * @param questId The ID of the quest
-     * @param score The best score to display
+     * This method is called when returning to this activity
+     * to refresh the best ranks display
      */
-    public void updateQuestBestScore(int questId, int score) {
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Reload best ranks each time this activity becomes visible
+        loadBestScores();
+    }
+
+    /**
+     * Method to get the quest type by quest ID
+     * @param questId The quest ID (1-5)
+     * @return The quest type string
+     */
+    public String getQuestTypeById(int questId) {
+        if (questId >= 1 && questId <= 5) {
+            return questTypes[questId - 1];
+        }
+        return questTypes[0]; // Default to MILITARY
+    }
+
+    /**
+     * Method to refresh a specific quest's best rank display
+     * @param questId The quest ID to refresh
+     */
+    public void refreshQuestBestRank(int questId) {
+        String questType = getQuestTypeById(questId);
+        String bestRank = scoreManager.getBestRank(questType);
+
         TextView textView = null;
-
         switch (questId) {
             case 1:
                 textView = quest1BestScore;
@@ -189,88 +287,7 @@ public class QuestListActivity extends AppCompatActivity {
         }
 
         if (textView != null) {
-            updateBestScoreDisplay(textView, score);
+            updateBestRankDisplay(textView, bestRank);
         }
-    }
-
-    private void startQuestActivity(String questTitle, int questId) {
-        // Navigate to specific quest details/start screen
-        Intent intent = new Intent(this, QuestModeActivity.class);
-        intent.putExtra("QUEST_TITLE", questTitle);
-        intent.putExtra("QUEST_ID", questId);
-        startActivity(intent);
-    }
-
-    private void setupBottomNavigation() {
-        // Home button navigation
-        homeContainer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(QuestListActivity.this, HomeActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        // Mini Games navigation
-        miniGamesContainer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(QuestListActivity.this, MiniGamesActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        // Settings navigation
-        settingsContainer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(QuestListActivity.this, SettingsActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
-
-    // Method to update quest progress
-    public void updateQuestProgress(int questId, int progressPercentage) {
-        switch (questId) {
-            case 1:
-                quest1Progress.setProgress(progressPercentage);
-                quest1Percentage.setText(progressPercentage + "%");
-                break;
-            case 2:
-                quest2Progress.setProgress(progressPercentage);
-                quest2Percentage.setText(progressPercentage + "%");
-                break;
-            case 3:
-                quest3Progress.setProgress(progressPercentage);
-                quest3Percentage.setText(progressPercentage + "%");
-                break;
-            case 4:
-                quest4Progress.setProgress(progressPercentage);
-                quest4Percentage.setText(progressPercentage + "%");
-                break;
-            case 5:
-                quest5Progress.setProgress(progressPercentage);
-                quest5Percentage.setText(progressPercentage + "%");
-                break;
-        }
-    }
-
-    // If you have any back button handling for this screen:
-    @Override
-    public void onBackPressed() {
-        // You might want custom behavior or just default
-        super.onBackPressed();
-    }
-
-    /**
-     * This method should be called from QuestModeActivity when a quest is completed
-     * to update the best score if necessary
-     */
-    @Override
-    protected void onResume() {
-        super.onResume();
-        // Reload best scores each time this activity becomes visible
-        loadBestScores();
     }
 }

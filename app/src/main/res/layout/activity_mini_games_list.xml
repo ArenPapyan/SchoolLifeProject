@@ -98,6 +98,7 @@
 
             <!-- Game 1 - Word Puzzle -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/game1PlayButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -145,17 +146,6 @@
                         app:layout_constraintStart_toEndOf="@+id/game1Icon"
                         app:layout_constraintTop_toBottomOf="@+id/game1Title" />
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/game1PlayButton"
-                        android:layout_width="80dp"
-                        android:layout_height="48dp"
-                        android:text="Play"
-                        android:textColor="#FFFFFF"
-                        app:backgroundTint="#6200EE"
-                        app:cornerRadius="20dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/game1Description"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -163,6 +153,7 @@
 
             <!-- Game 2 - Memory Match -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/game2PlayButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -209,23 +200,12 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/game2Icon"
                         app:layout_constraintTop_toBottomOf="@+id/game2Title" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/game2PlayButton"
-                        android:layout_width="80dp"
-                        android:layout_height="48dp"
-                        android:text="Play"
-                        android:textColor="#FFFFFF"
-                        app:backgroundTint="#6200EE"
-                        app:cornerRadius="20dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/game2Description"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
             <!-- Game 3 - Math Dash -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/game3PlayButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -251,7 +231,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="90dp"
-                        android:text="Math Dash"
+                        android:text="Snake"
                         android:textColor="#202124"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -266,53 +246,19 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="4dp"
                         android:layout_marginEnd="90dp"
-                        android:text="Solve math problems quickly"
+                        android:text="Eat many apples as you can"
                         android:textColor="#5F6368"
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/game3Icon"
                         app:layout_constraintTop_toBottomOf="@+id/game3Title" />
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/game3PlayButton"
-                        android:layout_width="80dp"
-                        android:layout_height="48dp"
-                        android:text="Play"
-                        android:textColor="#FFFFFF"
-                        app:backgroundTint="#6200EE"
-                        app:cornerRadius="20dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/game3Description"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <!-- High Score -->
-                    <TextView
-                        android:id="@+id/game3ScoreLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:text="Score:"
-                        android:textColor="#5F6368"
-                        android:textSize="14sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/game3Icon" />
-
-                    <TextView
-                        android:id="@+id/game3Score"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="78/100"
-                        android:textColor="#6200EE"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toEndOf="@+id/game3ScoreLabel"
-                        app:layout_constraintTop_toTopOf="@+id/game3ScoreLabel" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
             <!-- Game 4 - Hangman -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/game4PlayButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -338,7 +284,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="90dp"
-                        android:text="Hangman"
+                        android:text="2048"
                         android:textColor="#202124"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -353,135 +299,13 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="4dp"
                         android:layout_marginEnd="90dp"
-                        android:text="Guess the word before time runs out"
+                        android:text="Take more points as you can"
                         android:textColor="#5F6368"
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/game4Icon"
                         app:layout_constraintTop_toBottomOf="@+id/game4Title" />
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/game4PlayButton"
-                        android:layout_width="80dp"
-                        android:layout_height="48dp"
-                        android:text="Play"
-                        android:textColor="#FFFFFF"
-                        app:backgroundTint="#6200EE"
-                        app:cornerRadius="20dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/game4Description"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <!-- High Score -->
-                    <TextView
-                        android:id="@+id/game4ScoreLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:text="Wins:"
-                        android:textColor="#5F6368"
-                        android:textSize="14sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/game4Icon" />
-
-                    <TextView
-                        android:id="@+id/game4Score"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="12/20"
-                        android:textColor="#6200EE"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toEndOf="@+id/game4ScoreLabel"
-                        app:layout_constraintTop_toTopOf="@+id/game4ScoreLabel" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Game 5 - Puzzle Slider -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="4dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp">
-
-                    <ImageView
-                        android:id="@+id/game5Icon"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:src="@drawable/mountain"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/game5Title"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="90dp"
-                        android:text="Puzzle Slider"
-                        android:textColor="#202124"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/game5Icon"
-                        app:layout_constraintTop_toTopOf="@+id/game5Icon" />
-
-                    <TextView
-                        android:id="@+id/game5Description"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginEnd="90dp"
-                        android:text="Slide tiles to solve the puzzle"
-                        android:textColor="#5F6368"
-                        android:textSize="14sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/game5Icon"
-                        app:layout_constraintTop_toBottomOf="@+id/game5Title" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/game5PlayButton"
-                        android:layout_width="80dp"
-                        android:layout_height="40dp"
-                        android:text="Play"
-                        android:textColor="#FFFFFF"
-                        app:cornerRadius="20dp"
-                        app:backgroundTint="#6200EE"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="@+id/game5Description" />
-
-                    <!-- High Score -->
-                    <TextView
-                        android:id="@+id/game5ScoreLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:text="Best Time:"
-                        android:textColor="#5F6368"
-                        android:textSize="14sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/game5Icon" />
-
-                    <TextView
-                        android:id="@+id/game5Score"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="1:24"
-                        android:textColor="#6200EE"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toEndOf="@+id/game5ScoreLabel"
-                        app:layout_constraintTop_toTopOf="@+id/game5ScoreLabel" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 

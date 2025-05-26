@@ -98,7 +98,7 @@
 
             <!-- Quiz 1 - Physics -->
             <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
+                android:id="@+id/quiz1StartButton"                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 app:cardCornerRadius="12dp"
@@ -145,18 +145,6 @@
                         app:layout_constraintStart_toEndOf="@+id/quiz1Icon"
                         app:layout_constraintTop_toBottomOf="@+id/quiz1Title" />
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/quiz1StartButton"
-                        android:layout_width="80dp"
-                        android:layout_height="48dp"
-                        android:text="Start"
-                        android:textColor="#FFFFFF"
-                        app:backgroundTint="#6200EE"
-                        app:cornerRadius="20dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/quiz1Description"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
                     <!-- Percentage Line -->
                     <ProgressBar
                         android:id="@+id/quiz1Progress"
@@ -186,6 +174,7 @@
 
             <!-- Quiz 2 - Chemistry -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/quiz2StartButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -233,17 +222,7 @@
                         app:layout_constraintStart_toEndOf="@+id/quiz2Icon"
                         app:layout_constraintTop_toBottomOf="@+id/quiz2Title" />
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/quiz2StartButton"
-                        android:layout_width="80dp"
-                        android:layout_height="48dp"
-                        android:text="Start"
-                        android:textColor="#FFFFFF"
-                        app:backgroundTint="#6200EE"
-                        app:cornerRadius="20dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/quiz2Description"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+
 
                     <!-- Percentage Line -->
                     <ProgressBar
@@ -274,6 +253,7 @@
 
             <!-- Quiz 3 - Maths -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/quiz3StartButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -321,17 +301,6 @@
                         app:layout_constraintStart_toEndOf="@+id/quiz3Icon"
                         app:layout_constraintTop_toBottomOf="@+id/quiz3Title" />
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/quiz3StartButton"
-                        android:layout_width="80dp"
-                        android:layout_height="48dp"
-                        android:text="Start"
-                        android:textColor="#FFFFFF"
-                        app:backgroundTint="#6200EE"
-                        app:cornerRadius="20dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/quiz3Description"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
 
                     <!-- Percentage Line -->
                     <ProgressBar
@@ -362,6 +331,7 @@
 
             <!-- Quiz 4 - Geography -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/quiz4StartButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -409,18 +379,6 @@
                         app:layout_constraintStart_toEndOf="@+id/quiz4Icon"
                         app:layout_constraintTop_toBottomOf="@+id/quiz4Title" />
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/quiz4StartButton"
-                        android:layout_width="80dp"
-                        android:layout_height="48dp"
-                        android:text="Start"
-                        android:textColor="#FFFFFF"
-                        app:backgroundTint="#6200EE"
-                        app:cornerRadius="20dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/quiz4Description"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
                     <!-- Percentage Line -->
                     <ProgressBar
                         android:id="@+id/quiz4Progress"
@@ -450,6 +408,7 @@
 
             <!-- Quiz 5 - Biology -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/quiz5StartButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -497,17 +456,6 @@
                         app:layout_constraintStart_toEndOf="@+id/quiz5Icon"
                         app:layout_constraintTop_toBottomOf="@+id/quiz5Title" />
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/quiz5StartButton"
-                        android:layout_width="80dp"
-                        android:layout_height="40dp"
-                        android:text="Start"
-                        android:textColor="#FFFFFF"
-                        app:cornerRadius="20dp"
-                        app:backgroundTint="#6200EE"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="@+id/quiz5Description" />
 
                     <!-- Percentage Line -->
                     <ProgressBar

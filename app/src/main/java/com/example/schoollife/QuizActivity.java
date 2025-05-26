@@ -25,8 +25,8 @@ public class QuizActivity extends AppCompatActivity {
     private ConstraintLayout backToHomeLayout;
     private TextView quizText;
 
-    // Պահպանում ենք կոճակների սկզբնական գույնը
-    private ColorStateList defaultButtonColor;
+    // Store original button colors for each button individually
+    private ColorStateList defaultButtonColor1, defaultButtonColor2, defaultButtonColor3, defaultButtonColor4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +59,27 @@ public class QuizActivity extends AppCompatActivity {
         backToHomeLayout = findViewById(R.id.backToHomeLayout);
         quizText = findViewById(R.id.quizText);
 
-        // Պահպանում ենք կոճակների սկզբնական գույնը
-        defaultButtonColor = option1Button.getBackgroundTintList();
+        // Store each button's original color individually
+        defaultButtonColor1 = option1Button.getBackgroundTintList();
+        defaultButtonColor2 = option2Button.getBackgroundTintList();
+        defaultButtonColor3 = option3Button.getBackgroundTintList();
+        defaultButtonColor4 = option4Button.getBackgroundTintList();
+
+        // If any button doesn't have a tint, create a consistent default
+        if (defaultButtonColor1 == null || defaultButtonColor2 == null ||
+                defaultButtonColor3 == null || defaultButtonColor4 == null) {
+            ColorStateList defaultTint = ColorStateList.valueOf(Color.parseColor("#E0E0E0"));
+            defaultButtonColor1 = defaultTint;
+            defaultButtonColor2 = defaultTint;
+            defaultButtonColor3 = defaultTint;
+            defaultButtonColor4 = defaultTint;
+
+            // Apply the consistent color to all buttons
+            option1Button.setBackgroundTintList(defaultTint);
+            option2Button.setBackgroundTintList(defaultTint);
+            option3Button.setBackgroundTintList(defaultTint);
+            option4Button.setBackgroundTintList(defaultTint);
+        }
 
         // Set quiz title
         quizText.setText(quizType + " Quiz");
@@ -179,29 +198,34 @@ public class QuizActivity extends AppCompatActivity {
 
         // Check if the answer is correct
         if (selectedOption == currentQuestion.getCorrectAnswer()) {
-            // Correct answer - change tint color instead of background
+            // Correct answer - green color
             selectedButton.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#4CAF50"))); // GREEN
             score++;
         } else {
-            // Wrong answer - change tint color instead of background
+            // Wrong answer - red color
             selectedButton.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#F44336"))); // RED
 
-            // Highlight the correct answer
+            // Highlight the correct answer in green
             Button correctButton;
             int correctAnswer = currentQuestion.getCorrectAnswer();
-            if (correctAnswer == 1) {
-                correctButton = option1Button;
-            } else if (correctAnswer == 2) {
-                correctButton = option2Button;
-            } else if (correctAnswer == 3) {
-                correctButton = option3Button;
-            } else if (correctAnswer == 4) {
-                correctButton = option4Button;
-            } else {
-                return; // Invalid correct answer
+            switch (correctAnswer) {
+                case 1:
+                    correctButton = option1Button;
+                    break;
+                case 2:
+                    correctButton = option2Button;
+                    break;
+                case 3:
+                    correctButton = option3Button;
+                    break;
+                case 4:
+                    correctButton = option4Button;
+                    break;
+                default:
+                    return; // Invalid correct answer
             }
 
-            // Only change the correct button if it's not the one selected
+            // Only highlight the correct button if it's not the one selected
             if (correctAnswer != selectedOption) {
                 correctButton.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#4CAF50"))); // GREEN
             }
@@ -215,11 +239,11 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void resetButtonStates() {
-        // Reset button colors using backgroundTintList instead of backgroundResource
-        option1Button.setBackgroundTintList(defaultButtonColor); // Use the saved default color
-        option2Button.setBackgroundTintList(defaultButtonColor);
-        option3Button.setBackgroundTintList(defaultButtonColor);
-        option4Button.setBackgroundTintList(defaultButtonColor);
+        // Reset each button to its original color
+        option1Button.setBackgroundTintList(defaultButtonColor1);
+        option2Button.setBackgroundTintList(defaultButtonColor2);
+        option3Button.setBackgroundTintList(defaultButtonColor3);
+        option4Button.setBackgroundTintList(defaultButtonColor4);
 
         // Enable all option buttons
         option1Button.setEnabled(true);

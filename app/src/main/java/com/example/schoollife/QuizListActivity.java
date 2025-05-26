@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class QuizListActivity extends AppCompatActivity {
 
@@ -33,6 +35,20 @@ public class QuizListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_list);
 
+        FirebaseUser user1 = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+        TextView textView = findViewById(R.id.UserDetails);
+        if (user == null){
+            Intent intent = new Intent(getApplicationContext(), LogInActivity.class);
+            startActivity(intent);
+            finish();
+        } else {
+            if (user1 != null) {
+                String username = user.getDisplayName();
+                textView.setText(username);
+            }
+        }
         try {
             // Initialize score manager
             scoreManager = new QuizScoreManager(this);
@@ -114,7 +130,8 @@ public class QuizListActivity extends AppCompatActivity {
     }
 
     private void setupQuizCardListener(int buttonId, final String quizType) {
-        MaterialButton startButton = findViewById(buttonId);
+        CardView startButton = findViewById(buttonId);
+        if (startButton != null){
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,11 +139,13 @@ public class QuizListActivity extends AppCompatActivity {
             }
         });
     }
+    }
 
     private void startQuiz(String quizType) {
         Intent intent = new Intent(QuizListActivity.this, QuizActivity.class);
         intent.putExtra("QUIZ_TYPE", quizType);
         startActivity(intent);
+        finish();
     }
 
     private void setupBottomNavigation() {
@@ -147,7 +166,7 @@ public class QuizListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Navigate to mini games activity
-                Intent intent = new Intent(QuizListActivity.this, MiniGamesActivity.class);
+                Intent intent = new Intent(QuizListActivity.this, MiniGamesListActivity.class);
                 startActivity(intent);
                 // Toast message can be shown for features not yet implemented
             }

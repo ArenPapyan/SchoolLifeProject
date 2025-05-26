@@ -26,15 +26,8 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-        Button Quest = findViewById(R.id.btn2);
-        Button quiz = findViewById(R.id.btnQuiz);
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        FirebaseUser user = auth.getCurrentUser();
         TextView miniGames = findViewById(R.id.miniGames);
         TextView settings = findViewById(R.id.settings);
-        TextView textView = findViewById(R.id.UserDetails);
-        FirebaseUser user1 = FirebaseAuth.getInstance().getCurrentUser();
         // Optional: Add card click listeners if you want the entire cards to be clickable
         CardView questCard = findViewById(R.id.questCard);
         CardView quizCard = findViewById(R.id.quizCard);
@@ -59,22 +52,10 @@ public class HomeActivity extends AppCompatActivity {
             });
         }
 
-        Quest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, QuestListActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        quiz.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, QuizListActivity.class);
-                startActivity(intent);
-            }
-        });
-
+        FirebaseUser user1 = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+        TextView textView = findViewById(R.id.UserDetails);
         if (user == null){
             Intent intent = new Intent(getApplicationContext(), LogInActivity.class);
             startActivity(intent);

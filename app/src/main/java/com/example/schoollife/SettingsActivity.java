@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +20,20 @@ public class SettingsActivity extends AppCompatActivity {
 
         Button LogOut = findViewById(R.id.LogOut);
 
+        FirebaseUser user1 = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+        TextView textView = findViewById(R.id.settingsUserDetails);
+        if (user == null){
+            Intent intent = new Intent(getApplicationContext(), LogInActivity.class);
+            startActivity(intent);
+            finish();
+        } else {
+            if (user1 != null) {
+                String username = user.getDisplayName();
+                textView.setText(username);
+            }
+        }
 
         //TextView helpText = findViewById(R.id.help_text);
         //TextView aboutText = findViewById(R.id.about_text);
@@ -47,7 +63,7 @@ public class SettingsActivity extends AppCompatActivity {
             miniGamesContainer.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(SettingsActivity.this, MiniGamesActivity.class);
+                    Intent intent = new Intent(SettingsActivity.this, MiniGamesListActivity.class);
                     startActivity(intent);
                     finish();
                 }

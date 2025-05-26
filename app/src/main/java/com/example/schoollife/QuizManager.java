@@ -25,449 +25,1094 @@ public class QuizManager {
         // Physics Questions
         ArrayList<Question> physicsQuestions = new ArrayList<>();
 
-        physicsQuestions.add(new Question(
-                "What is the SI unit of electric current?",
-                "Volt",
-                "Ampere",
-                "Ohm",
-                "Coulomb",
-                2)); // Increased by 1
-
-        physicsQuestions.add(new Question(
-                "Who proposed the laws of motion?",
-                "Albert Einstein",
-                "Galileo Galilei",
-                "Isaac Newton",
-                "Nikola Tesla",
-                3)); // Increased by 1
-
-        physicsQuestions.add(new Question(
-                "What does a voltmeter measure?",
-                "Current",
-                "Resistance",
-                "Voltage",
-                "Power",
-                3)); // Increased by 1
-
-        physicsQuestions.add(new Question(
-                "Which particle has a negative charge?",
-                "Proton",
-                "Electron",
-                "Neutron",
-                "Photon",
-                2)); // Increased by 1
-
-        physicsQuestions.add(new Question(
-                "What is the speed of light in vacuum?",
-                "3 × 10^6 m/s",
-                "3 × 10^7 m/s",
-                "3 × 10^8 m/s",
-                "3 × 10^9 m/s",
-                3)); // Increased by 1
-
-        physicsQuestions.add(new Question(
-                "Which law states that energy cannot be created or destroyed?",
-                "Ohm's Law",
-                "Newton's First Law",
-                "Law of Conservation of Energy",
-                "Hooke's Law",
-                3)); // Increased by 1
-
-        physicsQuestions.add(new Question(
-                "Which of these is a scalar quantity?",
-                "Velocity",
-                "Acceleration",
-                "Force",
-                "Temperature",
-                4)); // Increased by 1
-
-        physicsQuestions.add(new Question(
-                "What does Ohm's Law relate?",
+        physicsQuestions.add(new Question("What does Ohm's Law relate?",
                 "Current, voltage, and resistance",
                 "Force, mass, and acceleration",
                 "Power, current, and voltage",
                 "Energy, mass, and light",
-                1)); // Increased by 1
+                1));
 
-        physicsQuestions.add(new Question(
-                "Which of the following is not a fundamental force?",
-                "Gravitational force",
-                "Electromagnetic force",
-                "Frictional force",
-                "Nuclear force",
-                3)); // Increased by 1
-
-        physicsQuestions.add(new Question(
-                "What is the unit of frequency?",
+        physicsQuestions.add(new Question("What is the unit of force?",
                 "Joule",
                 "Watt",
-                "Hertz",
                 "Newton",
-                3)); // Increased by 1
+                "Pascal",
+                3));
 
-        physicsQuestions.add(new Question(
-                "Which device converts electrical energy into mechanical energy?",
-                "Battery",
-                "Generator",
-                "Motor",
-                "Transformer",
-                3)); // Increased by 1
+        physicsQuestions.add(new Question("Which particle has a negative charge?",
+                "Proton",
+                "Electron",
+                "Neutron",
+                "Photon",
+                2));
 
-        physicsQuestions.add(new Question(
-                "What is measured in Newtons?",
-                "Energy",
-                "Mass",
-                "Force",
-                "Work",
-                3)); // Increased by 1
+        physicsQuestions.add(new Question("What does the first law of thermodynamics state?",
+                "Energy cannot be created or destroyed",
+                "Force equals mass times acceleration",
+                "For every action, there is an equal reaction",
+                "The entropy of the universe is constant",
+                1));
 
-        physicsQuestions.add(new Question(
-                "Which wave does not require a medium to travel?",
-                "Sound wave",
-                "Water wave",
-                "Seismic wave",
-                "Light wave",
-                4)); // Increased by 1
-
-        physicsQuestions.add(new Question(
-                "What is kinetic energy?",
-                "Energy stored in an object",
-                "Energy due to motion",
-                "Energy of light",
-                "Thermal energy",
-                2)); // Increased by 1
-
-        physicsQuestions.add(new Question(
-                "What is the acceleration due to gravity on Earth?",
-                "8.9 m/s²",
+        physicsQuestions.add(new Question("What is the acceleration due to gravity on Earth?",
+                "6.8 m/s²",
                 "9.8 m/s²",
                 "10.8 m/s²",
-                "11.2 m/s²",
-                2)); // Increased by 1
+                "1.6 m/s²",
+                2));
+
+// 5 down, 40 to go...
+        physicsQuestions.add(new Question("Which law explains why rockets work?",
+                "Newton’s First Law",
+                "Newton’s Second Law",
+                "Newton’s Third Law",
+                "Law of Conservation of Energy",
+                3));
+
+        physicsQuestions.add(new Question("What does a volt measure?",
+                "Current",
+                "Resistance",
+                "Power",
+                "Electric potential difference",
+                4));
+
+        physicsQuestions.add(new Question("What is the speed of light in a vacuum?",
+                "3.0 × 10⁸ m/s",
+                "1.5 × 10⁸ m/s",
+                "9.8 × 10⁸ m/s",
+                "3.0 × 10⁶ m/s",
+                1));
+
+        physicsQuestions.add(new Question("Which wave has the highest frequency?",
+                "Microwaves",
+                "Radio waves",
+                "Gamma rays",
+                "Infrared",
+                3));
+
+        physicsQuestions.add(new Question("What is the SI unit of power?",
+                "Joule",
+                "Watt",
+                "Volt",
+                "Ampere",
+                2));
+
+        physicsQuestions.add(new Question("Which scientist developed the laws of motion?",
+                "Einstein",
+                "Newton",
+                "Galileo",
+                "Tesla",
+                2));
+
+        physicsQuestions.add(new Question("What type of lens converges light rays?",
+                "Concave",
+                "Convex",
+                "Flat",
+                "None",
+                2));
+
+        physicsQuestions.add(new Question("What is kinetic energy?",
+                "Energy of position",
+                "Energy stored in atoms",
+                "Energy of motion",
+                "Energy from heat",
+                3));
+
+        physicsQuestions.add(new Question("What does the symbol 'g' represent in physics?",
+                "Gravitational constant",
+                "Acceleration due to gravity",
+                "Mass of an object",
+                "Work done",
+                2));
+
+        physicsQuestions.add(new Question("What happens to the pressure of a gas if volume decreases?",
+                "It increases",
+                "It decreases",
+                "It stays the same",
+                "It becomes zero",
+                1));
+
+        physicsQuestions.add(new Question("What is the unit of electric current?",
+                "Ohm",
+                "Watt",
+                "Ampere",
+                "Volt",
+                3));
+
+        physicsQuestions.add(new Question("What kind of energy is stored in a stretched spring?",
+                "Kinetic energy",
+                "Thermal energy",
+                "Potential energy",
+                "Nuclear energy",
+                3));
+
+        physicsQuestions.add(new Question("Who discovered radioactivity?",
+                "Newton",
+                "Marie Curie",
+                "Einstein",
+                "Faraday",
+                2));
+
+        physicsQuestions.add(new Question("What is the main source of energy on Earth?",
+                "Nuclear power",
+                "Wind",
+                "Sun",
+                "Coal",
+                3));
+
+        physicsQuestions.add(new Question("Which of the following is a scalar quantity?",
+                "Force",
+                "Displacement",
+                "Velocity",
+                "Mass",
+                4));
+
+// 20 down...
+        physicsQuestions.add(new Question("What does E=mc² represent?",
+                "Energy of sound",
+                "Mass of light",
+                "Mass-energy equivalence",
+                "None of the above",
+                3));
+
+        physicsQuestions.add(new Question("What is the direction of electric current?",
+                "Negative to positive",
+                "Positive to negative",
+                "Downward",
+                "No direction",
+                2));
+
+        physicsQuestions.add(new Question("What is a transformer used for?",
+                "Changing voltage",
+                "Measuring current",
+                "Generating electricity",
+                "Storing energy",
+                1));
+
+        physicsQuestions.add(new Question("Which subatomic particle is found in the nucleus?",
+                "Electron",
+                "Proton",
+                "Photon",
+                "Neutrino",
+                2));
+
+        physicsQuestions.add(new Question("How many laws of motion did Newton formulate?",
+                "One",
+                "Two",
+                "Three",
+                "Four",
+                3));
+
+        physicsQuestions.add(new Question("Which device is used to measure current?",
+                "Voltmeter",
+                "Ammeter",
+                "Barometer",
+                "Thermometer",
+                2));
+
+        physicsQuestions.add(new Question("What is the function of a fuse in an electrical circuit?",
+                "Generate electricity",
+                "Store energy",
+                "Protect circuit from overcurrent",
+                "Convert AC to DC",
+                3));
+
+        physicsQuestions.add(new Question("Which quantity has both magnitude and direction?",
+                "Mass",
+                "Speed",
+                "Time",
+                "Velocity",
+                4));
+
+        physicsQuestions.add(new Question("What type of circuit allows current to flow in only one path?",
+                "Series circuit",
+                "Parallel circuit",
+                "Short circuit",
+                "Open circuit",
+                1));
+
+        physicsQuestions.add(new Question("Which color of light has the longest wavelength?",
+                "Violet",
+                "Blue",
+                "Red",
+                "Green",
+                3));
+
+// 30 down...
+        physicsQuestions.add(new Question("Which scientist is known for the uncertainty principle?",
+                "Bohr",
+                "Einstein",
+                "Heisenberg",
+                "Tesla",
+                3));
+
+        physicsQuestions.add(new Question("What is the unit of frequency?",
+                "Watt",
+                "Hertz",
+                "Volt",
+                "Ohm",
+                2));
+
+        physicsQuestions.add(new Question("What causes an object to accelerate?",
+                "Friction",
+                "Gravity",
+                "Unbalanced force",
+                "Constant speed",
+                3));
+
+        physicsQuestions.add(new Question("What happens to light when it passes through a prism?",
+                "It bends backward",
+                "It gets absorbed",
+                "It disperses into a spectrum",
+                "It reflects",
+                3));
+
+        physicsQuestions.add(new Question("What is absolute zero?",
+                "0°C",
+                "273°C",
+                "-273.15°C",
+                "-100°C",
+                3));
+
+        physicsQuestions.add(new Question("What is the function of a capacitor?",
+                "Supply power",
+                "Store charge",
+                "Convert energy",
+                "Reduce voltage",
+                2));
+
+        physicsQuestions.add(new Question("What property of a wave determines its pitch?",
+                "Amplitude",
+                "Wavelength",
+                "Frequency",
+                "Speed",
+                3));
+
+        physicsQuestions.add(new Question("Which part of the atom is positively charged?",
+                "Electron",
+                "Neutron",
+                "Proton",
+                "Quark",
+                3));
+
+        physicsQuestions.add(new Question("What does a spectrometer measure?",
+                "Speed",
+                "Voltage",
+                "Spectrum of light",
+                "Temperature",
+                3));
+
+        physicsQuestions.add(new Question("Which phenomenon explains why stars twinkle?",
+                "Reflection",
+                "Refraction",
+                "Diffraction",
+                "Scattering",
+                2));
+
+// Final 5...
+        physicsQuestions.add(new Question("Which type of energy is used in solar panels?",
+                "Chemical",
+                "Thermal",
+                "Kinetic",
+                "Light",
+                4));
+
+        physicsQuestions.add(new Question("Which scientist is known for the theory of relativity?",
+                "Bohr",
+                "Einstein",
+                "Newton",
+                "Curie",
+                2));
+
+        physicsQuestions.add(new Question("What is the resistance of a superconductor?",
+                "Very high",
+                "Infinite",
+                "Zero",
+                "Variable",
+                3));
+
+        physicsQuestions.add(new Question("What does a seismograph measure?",
+                "Sound waves",
+                "Electric current",
+                "Light intensity",
+                "Earthquakes",
+                4));
+
+        physicsQuestions.add(new Question("What type of mirror is used in car headlights?",
+                "Concave",
+                "Convex",
+                "Flat",
+                "Plane",
+                1));
+        // Increased by 1
         quizzes.put("Physics", physicsQuestions);
 
         // Chemistry Questions
         ArrayList<Question> chemistryQuestions = new ArrayList<>();
 
+        // 45 Chemistry Questions
+
         chemistryQuestions.add(new Question(
                 "What is the chemical symbol for gold?",
+                "Go",
+                "Gd",
                 "Au",
                 "Ag",
-                "Gd",
-                "Go",
-                1)); // Increased by 1
+                3));
 
         chemistryQuestions.add(new Question(
-                "What is the pH value of pure water?",
-                "0",
-                "7",
-                "14",
-                "1",
-                2)); // Increased by 1
-
-        chemistryQuestions.add(new Question(
-                "Which gas is most abundant in the Earth's atmosphere?",
+                "What is the most abundant gas in Earth's atmosphere?",
                 "Oxygen",
-                "Carbon Dioxide",
+                "Carbon dioxide",
                 "Nitrogen",
-                "Hydrogen",
-                3)); // Increased by 1
+                "Argon",
+                3));
 
         chemistryQuestions.add(new Question(
                 "What is the atomic number of carbon?",
-                "6",
-                "12",
-                "8",
                 "4",
-                1)); // Increased by 1
+                "6",
+                "8",
+                "12",
+                2));
 
         chemistryQuestions.add(new Question(
-                "Which element is a noble gas?",
+                "Which element has the symbol Na?",
+                "Nickel",
+                "Sodium",
                 "Nitrogen",
-                "Chlorine",
-                "Argon",
-                "Hydrogen",
-                3)); // Increased by 1
+                "Neon",
+                2));
 
         chemistryQuestions.add(new Question(
-                "What type of bond involves the sharing of electron pairs?",
-                "Ionic bond",
+                "What is the pH of pure water?",
+                "6",
+                "7",
+                "8",
+                "9",
+                2));
+
+        chemistryQuestions.add(new Question(
+                "What type of bond forms between a metal and non-metal?",
                 "Covalent bond",
+                "Ionic bond",
                 "Metallic bond",
                 "Hydrogen bond",
-                2)); // Increased by 1
+                2));
 
         chemistryQuestions.add(new Question(
-                "H2O is the chemical formula for what substance?",
-                "Hydrogen peroxide",
-                "Hydroxide",
-                "Water",
-                "Oxygen gas",
-                3)); // Increased by 1
+                "What is the lightest element?",
+                "Helium",
+                "Hydrogen",
+                "Lithium",
+                "Beryllium",
+                2));
 
         chemistryQuestions.add(new Question(
-                "Which acid is found in the human stomach?",
-                "Sulfuric acid",
-                "Acetic acid",
-                "Hydrochloric acid",
-                "Nitric acid",
-                3)); // Increased by 1
+                "Which gas is produced when zinc reacts with hydrochloric acid?",
+                "Oxygen",
+                "Hydrogen",
+                "Carbon dioxide",
+                "Nitrogen",
+                2));
 
         chemistryQuestions.add(new Question(
-                "Which of these is an alkali metal?",
-                "Calcium",
-                "Sodium",
-                "Aluminum",
+                "What is the chemical formula for water?",
+                "H2O",
+                "H2O2",
+                "HO2",
+                "H3O",
+                1));
+
+        chemistryQuestions.add(new Question(
+                "Which element is essential for photosynthesis?",
                 "Iron",
-                2)); // Increased by 1
+                "Magnesium",
+                "Calcium",
+                "Potassium",
+                2));
 
         chemistryQuestions.add(new Question(
-                "What is the chemical symbol for sodium?",
-                "Na",
-                "So",
-                "Sn",
-                "Sm",
-                1)); // Increased by 1
-
-        chemistryQuestions.add(new Question(
-                "Which compound is commonly known as table salt?",
-                "NaCl",
-                "KCl",
-                "Na2CO3",
-                "CaCl2",
-                1)); // Increased by 1
-
-        chemistryQuestions.add(new Question(
-                "What is the process of a solid changing directly into a gas called?",
-                "Evaporation",
-                "Condensation",
-                "Sublimation",
-                "Melting",
-                3)); // Increased by 1
-
-        chemistryQuestions.add(new Question(
-                "Which element has the highest electronegativity?",
+                "What is the most electronegative element?",
                 "Oxygen",
                 "Fluorine",
-                "Nitrogen",
                 "Chlorine",
-                2)); // Increased by 1
+                "Nitrogen",
+                2));
 
         chemistryQuestions.add(new Question(
-                "Which state of matter has a definite volume but no definite shape?",
-                "Solid",
-                "Liquid",
-                "Gas",
-                "Plasma",
-                2)); // Increased by 1
+                "What is the chemical symbol for silver?",
+                "Si",
+                "Ag",
+                "Au",
+                "Al",
+                2));
+
+        chemistryQuestions.add(new Question(
+                "Which acid is found in vinegar?",
+                "Citric acid",
+                "Acetic acid",
+                "Sulfuric acid",
+                "Nitric acid",
+                2));
+
+        chemistryQuestions.add(new Question(
+                "What is Avogadro's number approximately?",
+                "6.02 × 10^23",
+                "6.02 × 10^22",
+                "6.02 × 10^24",
+                "6.02 × 10^21",
+                1));
+
+        chemistryQuestions.add(new Question(
+                "Which noble gas is most abundant in air?",
+                "Helium",
+                "Neon",
+                "Argon",
+                "Krypton",
+                3));
+
+        chemistryQuestions.add(new Question(
+                "What is the chemical formula for table salt?",
+                "NaCl",
+                "KCl",
+                "CaCl2",
+                "MgCl2",
+                1));
+
+        chemistryQuestions.add(new Question(
+                "Which element has the highest melting point?",
+                "Iron",
+                "Tungsten",
+                "Carbon",
+                "Platinum",
+                2));
+
+        chemistryQuestions.add(new Question(
+                "What is the process of a solid directly becoming a gas?",
+                "Evaporation",
+                "Sublimation",
+                "Condensation",
+                "Deposition",
+                2));
+
+        chemistryQuestions.add(new Question(
+                "Which vitamin is produced when skin is exposed to sunlight?",
+                "Vitamin C",
+                "Vitamin D",
+                "Vitamin E",
+                "Vitamin K",
+                2));
+
+        chemistryQuestions.add(new Question(
+                "What is the chemical symbol for iron?",
+                "Ir",
+                "Fe",
+                "In",
+                "I",
+                2));
+
+        chemistryQuestions.add(new Question(
+                "Which gas is responsible for the greenhouse effect?",
+                "Oxygen",
+                "Carbon dioxide",
+                "Nitrogen",
+                "Hydrogen",
+                2));
+
+        chemistryQuestions.add(new Question(
+                "What is the hardest natural substance?",
+                "Quartz",
+                "Diamond",
+                "Graphite",
+                "Corundum",
+                2));
+
+        chemistryQuestions.add(new Question(
+                "Which element is liquid at room temperature besides mercury?",
+                "Gallium",
+                "Bromine",
+                "Cesium",
+                "Francium",
+                2));
+
+        chemistryQuestions.add(new Question(
+                "What is the chemical formula for methane?",
+                "CH4",
+                "C2H6",
+                "C2H4",
+                "C3H8",
+                1));
+
+        chemistryQuestions.add(new Question(
+                "Which acid is found in citrus fruits?",
+                "Malic acid",
+                "Citric acid",
+                "Tartaric acid",
+                "Lactic acid",
+                2));
+
+        chemistryQuestions.add(new Question(
+                "What is the most abundant element in the universe?",
+                "Oxygen",
+                "Hydrogen",
+                "Carbon",
+                "Helium",
+                2));
+
+        chemistryQuestions.add(new Question(
+                "Which element has the symbol K?",
+                "Krypton",
+                "Potassium",
+                "Calcium",
+                "Cobalt",
+                2));
+
+        chemistryQuestions.add(new Question(
+                "What is the chemical formula for ammonia?",
+                "NH3",
+                "NH4",
+                "N2H4",
+                "NO3",
+                1));
+
+        chemistryQuestions.add(new Question(
+                "Which type of reaction releases heat?",
+                "Endothermic",
+                "Exothermic",
+                "Isothermic",
+                "Adiabatic",
+                2));
+
+        chemistryQuestions.add(new Question(
+                "What is the atomic number of oxygen?",
+                "6",
+                "8",
+                "10",
+                "12",
+                2));
+
+        chemistryQuestions.add(new Question(
+                "Which element is used in pencils?",
+                "Lead",
+                "Carbon",
+                "Silicon",
+                "Tin",
+                2));
+
+        chemistryQuestions.add(new Question(
+                "What is the chemical symbol for copper?",
+                "Co",
+                "Cu",
+                "Cr",
+                "Ca",
+                2));
+
+        chemistryQuestions.add(new Question(
+                "Which gas makes up about 21% of Earth's atmosphere?",
+                "Nitrogen",
+                "Oxygen",
+                "Carbon dioxide",
+                "Argon",
+                2));
 
         chemistryQuestions.add(new Question(
                 "What is the main component of natural gas?",
-                "Butane",
+                "Ethane",
                 "Methane",
                 "Propane",
-                "Ethane",
-                2)); // Increased by 1
+                "Butane",
+                2));
+
+        chemistryQuestions.add(new Question(
+                "Which element has the symbol Pb?",
+                "Platinum",
+                "Lead",
+                "Phosphorus",
+                "Palladium",
+                2));
+
+        chemistryQuestions.add(new Question(
+                "What is the chemical formula for carbon dioxide?",
+                "CO",
+                "CO2",
+                "C2O",
+                "C2O2",
+                2));
+
+        chemistryQuestions.add(new Question(
+                "Which acid is found in the stomach?",
+                "Sulfuric acid",
+                "Hydrochloric acid",
+                "Nitric acid",
+                "Phosphoric acid",
+                2));
+
+        chemistryQuestions.add(new Question(
+                "What is the study of carbon compounds called?",
+                "Inorganic chemistry",
+                "Organic chemistry",
+                "Physical chemistry",
+                "Analytical chemistry",
+                2));
+
+        chemistryQuestions.add(new Question(
+                "Which element has the highest atomic number naturally occurring?",
+                "Uranium",
+                "Plutonium",
+                "Thorium",
+                "Radium",
+                1));
+
+        chemistryQuestions.add(new Question(
+                "What is the chemical symbol for helium?",
+                "H",
+                "He",
+                "Hl",
+                "Hm",
+                2));
+
+        chemistryQuestions.add(new Question(
+                "Which compound is known as dry ice?",
+                "Frozen water",
+                "Solid carbon dioxide",
+                "Frozen nitrogen",
+                "Solid methane",
+                2));
+
+        chemistryQuestions.add(new Question(
+                "What is the molecular formula for glucose?",
+                "C6H12O6",
+                "C12H22O11",
+                "C6H6O6",
+                "C5H10O5",
+                1));
+
+        chemistryQuestions.add(new Question(
+                "Which element is essential for thyroid function?",
+                "Iron",
+                "Iodine",
+                "Calcium",
+                "Zinc",
+                2));
+
+        chemistryQuestions.add(new Question(
+                "What is the chemical name for rust?",
+                "Iron sulfide",
+                "Iron oxide",
+                "Iron carbonate",
+                "Iron nitrate",
+                2));
+
+        chemistryQuestions.add(new Question(
+                "Which gas is released during photosynthesis?",
+                "Carbon dioxide",
+                "Oxygen",
+                "Nitrogen",
+                "Hydrogen",
+                2));
 
         quizzes.put("Chemistry", chemistryQuestions);
 
         // Mathematics Questions
         ArrayList<Question> mathsQuestions = new ArrayList<>();
-        mathsQuestions.add(new Question(
-                "What is the value of π (pi) rounded to two decimal places?",
-                "3.12",
-                "3.14",
-                "3.16",
-                "3.18",
-                2)); // Increased by 1
-
-        mathsQuestions.add(new Question(
-                "What is 7 × 8?",
-                "54",
-                "56",
-                "58",
-                "64",
-                2)); // Increased by 1
-
-        mathsQuestions.add(new Question(
-                "What is the square root of 144?",
-                "11",
-                "12",
-                "13",
-                "14",
-                2)); // Increased by 1
-
-        mathsQuestions.add(new Question(
-                "Which number is a prime number?",
-                "4",
-                "6",
-                "7",
-                "9",
-                3)); // Increased by 1
-
-        mathsQuestions.add(new Question(
-                "What is the formula for the area of a circle?",
-                "πr²",
-                "2πr",
-                "πd",
-                "r²",
-                1)); // Increased by 1
-
+        // 45 Mathematics Questions
         mathsQuestions.add(new Question(
                 "What is 25% of 200?",
                 "25",
                 "40",
                 "50",
                 "75",
-                3)); // Increased by 1
+                3));
 
         mathsQuestions.add(new Question(
-                "If x + 3 = 10, what is x?",
+                "What is the square root of 144?",
+                "10",
+                "11",
+                "12",
+                "13",
+                3));
+
+        mathsQuestions.add(new Question(
+                "What is 7 × 8?",
+                "54",
+                "55",
+                "56",
+                "57",
+                3));
+
+        mathsQuestions.add(new Question(
+                "What is the value of π (pi) to 2 decimal places?",
+                "3.12",
+                "3.14",
+                "3.16",
+                "3.18",
+                2));
+
+        mathsQuestions.add(new Question(
+                "What is 15² (15 squared)?",
+                "215",
+                "225",
+                "235",
+                "245",
+                2));
+
+        mathsQuestions.add(new Question(
+                "What is 180 ÷ 12?",
+                "14",
+                "15",
+                "16",
+                "17",
+                2));
+
+        mathsQuestions.add(new Question(
+                "What is the sum of angles in a triangle?",
+                "90°",
+                "180°",
+                "270°",
+                "360°",
+                2));
+
+        mathsQuestions.add(new Question(
+                "What is 2³ (2 to the power of 3)?",
+                "6",
+                "8",
+                "9",
+                "12",
+                2));
+
+        mathsQuestions.add(new Question(
+                "What is 5! (5 factorial)?",
+                "100",
+                "110",
+                "120",
+                "130",
+                3));
+
+        mathsQuestions.add(new Question(
+                "What is the derivative of x²?",
+                "x",
+                "2x",
+                "x²",
+                "2x²",
+                2));
+
+        mathsQuestions.add(new Question(
+                "What is 3/4 as a decimal?",
+                "0.65",
+                "0.70",
+                "0.75",
+                "0.80",
+                3));
+
+        mathsQuestions.add(new Question(
+                "What is the circumference formula for a circle?",
+                "πr",
+                "2πr",
+                "πr²",
+                "2πr²",
+                2));
+
+        mathsQuestions.add(new Question(
+                "What is log₁₀(100)?",
+                "1",
+                "2",
+                "10",
+                "100",
+                2));
+
+        mathsQuestions.add(new Question(
+                "What is the slope of the line y = 3x + 5?",
+                "1",
+                "3",
+                "5",
+                "8",
+                2));
+
+        mathsQuestions.add(new Question(
+                "What is 60% of 150?",
+                "80",
+                "85",
+                "90",
+                "95",
+                3));
+
+        mathsQuestions.add(new Question(
+                "What is the area of a square with side length 6?",
+                "24",
+                "30",
+                "36",
+                "42",
+                3));
+
+        mathsQuestions.add(new Question(
+                "What is √(49)?",
+                "6",
+                "7",
+                "8",
+                "9",
+                2));
+
+        mathsQuestions.add(new Question(
+                "What is the next prime number after 17?",
+                "18",
+                "19",
+                "20",
+                "21",
+                2));
+
+        mathsQuestions.add(new Question(
+                "What is 9 × 12?",
+                "106",
+                "107",
+                "108",
+                "109",
+                3));
+
+        mathsQuestions.add(new Question(
+                "What is the integral of 2x?",
+                "x",
+                "x²",
+                "2x²",
+                "x² + C",
+                4));
+
+        mathsQuestions.add(new Question(
+                "What is 144 ÷ 16?",
+                "8",
+                "9",
+                "10",
+                "11",
+                2));
+
+        mathsQuestions.add(new Question(
+                "What is the sum of the first 10 natural numbers?",
+                "45",
+                "50",
+                "55",
+                "60",
+                3));
+
+        mathsQuestions.add(new Question(
+                "What is sin(90°)?",
+                "0",
+                "1",
+                "√2/2",
+                "√3/2",
+                2));
+
+        mathsQuestions.add(new Question(
+                "What is 4³ (4 cubed)?",
+                "12",
+                "16",
+                "48",
+                "64",
+                4));
+
+        mathsQuestions.add(new Question(
+                "What is the area of a circle with radius 3?",
+                "6π",
+                "9π",
+                "12π",
+                "18π",
+                2));
+
+        mathsQuestions.add(new Question(
+                "What is 13 + 29?",
+                "41",
+                "42",
+                "43",
+                "44",
+                2));
+
+        mathsQuestions.add(new Question(
+                "What is the hypotenuse of a right triangle with legs 3 and 4?",
                 "5",
                 "6",
                 "7",
                 "8",
-                3)); // Increased by 1
+                1));
 
         mathsQuestions.add(new Question(
-                "How many degrees are in a right angle?",
-                "45°",
-                "90°",
-                "180°",
-                "360°",
-                2)); // Increased by 1
+                "What is 0.25 as a fraction?",
+                "1/3",
+                "1/4",
+                "1/5",
+                "2/5",
+                2));
 
         mathsQuestions.add(new Question(
-                "What is the perimeter of a square with side length 6 cm?",
-                "12 cm",
-                "18 cm",
-                "24 cm",
-                "36 cm",
-                3)); // Increased by 1
+                "What is cos(0°)?",
+                "0",
+                "1",
+                "√2/2",
+                "√3/2",
+                2));
 
         mathsQuestions.add(new Question(
-                "What is the next number in the sequence: 2, 4, 8, 16, ___?",
+                "What is 11²?",
+                "111",
+                "121",
+                "131",
+                "141",
+                2));
+
+        mathsQuestions.add(new Question(
+                "What is the volume of a cube with side length 4?",
+                "16",
+                "32",
+                "48",
+                "64",
+                4));
+
+        mathsQuestions.add(new Question(
+                "What is 216 ÷ 18?",
+                "11",
+                "12",
+                "13",
+                "14",
+                2));
+
+        mathsQuestions.add(new Question(
+                "What is the GCD of 24 and 36?",
+                "6",
+                "8",
+                "12",
                 "18",
-                "20",
+                3));
+
+        mathsQuestions.add(new Question(
+                "What is tan(45°)?",
+                "0",
+                "1",
+                "√2",
+                "√3",
+                2));
+
+        mathsQuestions.add(new Question(
+                "What is 2⁵ (2 to the power of 5)?",
+                "16",
                 "24",
                 "32",
-                4)); // Increased by 1
+                "40",
+                3));
 
         mathsQuestions.add(new Question(
-                "What is the value of 3² + 4²?",
-                "25",
-                "20",
-                "12",
-                "5",
-                1)); // Increased by 1
+                "What is the perimeter of a rectangle with length 8 and width 5?",
+                "21",
+                "24",
+                "26",
+                "28",
+                3));
 
         mathsQuestions.add(new Question(
-                "Which shape has exactly 3 sides?",
-                "Square",
-                "Rectangle",
-                "Triangle",
-                "Circle",
-                3)); // Increased by 1
-
-        mathsQuestions.add(new Question(
-                "What is the median of this data set: 3, 7, 9, 10, 11?",
+                "What is √(81)?",
                 "7",
+                "8",
                 "9",
                 "10",
+                3));
+
+        mathsQuestions.add(new Question(
+                "What is 40% of 250?",
+                "90",
+                "95",
+                "100",
+                "105",
+                3));
+
+        mathsQuestions.add(new Question(
+                "What is the LCM of 6 and 8?",
+                "14",
+                "18",
+                "24",
+                "48",
+                3));
+
+        mathsQuestions.add(new Question(
+                "What is 17 × 6?",
+                "96",
+                "102",
+                "108",
+                "114",
+                2));
+
+        mathsQuestions.add(new Question(
+                "What is the surface area of a sphere with radius 2?",
+                "8π",
+                "12π",
+                "16π",
+                "20π",
+                3));
+
+        mathsQuestions.add(new Question(
+                "What is 169 ÷ 13?",
                 "11",
-                2)); // Increased by 1
+                "12",
+                "13",
+                "14",
+                3));
 
         mathsQuestions.add(new Question(
-                "What is 0.75 as a fraction?",
-                "3/4",
-                "1/2",
-                "2/5",
-                "4/5",
-                1)); // Increased by 1
+                "What is e (Euler's number) to 2 decimal places?",
+                "2.61",
+                "2.72",
+                "2.83",
+                "2.94",
+                2));
 
         mathsQuestions.add(new Question(
-                "If a triangle has angles of 90° and 30°, what is the third angle?",
-                "30°",
-                "45°",
-                "60°",
-                "90°",
-                3)); // Increased by 1
+                "What is 6! (6 factorial)?",
+                "620",
+                "680",
+                "720",
+                "780",
+                3));
+
+        mathsQuestions.add(new Question(
+                "What is the distance between points (0,0) and (3,4)?",
+                "4",
+                "5",
+                "6",
+                "7",
+                2));
 
         quizzes.put("Maths", mathsQuestions);
 
         // Geography Questions
         ArrayList<Question> geographyQuestions = new ArrayList<>();
+        // 45 Geography Questions
+
         geographyQuestions.add(new Question(
                 "What is the largest continent by area?",
                 "Africa",
                 "Asia",
                 "North America",
                 "Europe",
-                2)); // Increased by 1
+                2));
 
         geographyQuestions.add(new Question(
-                "Which is the longest river in the world?",
+                "Which river is the longest in the world?",
                 "Amazon River",
-                "Yangtze River",
                 "Nile River",
                 "Mississippi River",
-                3)); // Increased by 1
+                "Yangtze River",
+                2));
 
         geographyQuestions.add(new Question(
-                "What is the capital city of France?",
-                "Berlin",
-                "Madrid",
-                "Rome",
-                "Paris",
-                4)); // Increased by 1
+                "What is the capital of Australia?",
+                "Sydney",
+                "Melbourne",
+                "Canberra",
+                "Perth",
+                3));
 
         geographyQuestions.add(new Question(
-                "Which ocean is the largest?",
-                "Atlantic Ocean",
-                "Indian Ocean",
-                "Pacific Ocean",
-                "Arctic Ocean",
-                3)); // Increased by 1
-
-        geographyQuestions.add(new Question(
-                "Mount Everest is located in which mountain range?",
+                "Which mountain range contains Mount Everest?",
                 "Andes",
+                "Himalayas",
                 "Rocky Mountains",
                 "Alps",
-                "Himalayas",
-                4)); // Increased by 1
-
-        geographyQuestions.add(new Question(
-                "Which country has the most population?",
-                "United States",
-                "India",
-                "China",
-                "Russia",
-                3)); // Increased by 1
-
-        geographyQuestions.add(new Question(
-                "What is the capital of Japan?",
-                "Seoul",
-                "Beijing",
-                "Tokyo",
-                "Bangkok",
-                3)); // Increased by 1
-
-        geographyQuestions.add(new Question(
-                "Which desert is the largest in the world?",
-                "Sahara Desert",
-                "Gobi Desert",
-                "Kalahari Desert",
-                "Arctic Desert",
-                1)); // Increased by 1
-
-        geographyQuestions.add(new Question(
-                "Which country is known as the Land of the Rising Sun?",
-                "Thailand",
-                "China",
-                "Japan",
-                "Vietnam",
-                3)); // Increased by 1
+                2));
 
         geographyQuestions.add(new Question(
                 "What is the smallest country in the world?",
@@ -475,107 +1120,333 @@ public class QuizManager {
                 "Vatican City",
                 "San Marino",
                 "Liechtenstein",
-                2)); // Increased by 1
+                2));
 
         geographyQuestions.add(new Question(
-                "Which continent is the Sahara Desert located in?",
-                "Asia",
-                "Africa",
-                "Australia",
-                "South America",
-                2)); // Increased by 1
+                "Which ocean is the largest?",
+                "Atlantic Ocean",
+                "Indian Ocean",
+                "Pacific Ocean",
+                "Arctic Ocean",
+                3));
 
         geographyQuestions.add(new Question(
-                "Which river flows through Baghdad?",
-                "Euphrates",
-                "Jordan",
-                "Tigris",
-                "Danube",
-                3)); // Increased by 1
+                "What is the capital of Canada?",
+                "Toronto",
+                "Vancouver",
+                "Ottawa",
+                "Montreal",
+                3));
 
         geographyQuestions.add(new Question(
-                "Which two continents are located entirely in the Southern Hemisphere?",
-                "Asia and Africa",
-                "Australia and Antarctica",
-                "South America and Asia",
-                "Europe and South America",
-                2)); // Increased by 1
+                "Which desert is the largest in the world?",
+                "Sahara Desert",
+                "Gobi Desert",
+                "Kalahari Desert",
+                "Arabian Desert",
+                1));
 
         geographyQuestions.add(new Question(
-                "Which U.S. state has the most coastline?",
-                "California",
-                "Florida",
-                "Alaska",
-                "Hawaii",
-                3)); // Increased by 1
-
-        geographyQuestions.add(new Question(
-                "Which is the deepest ocean trench in the world?",
+                "What is the deepest ocean trench?",
                 "Puerto Rico Trench",
-                "Java Trench",
-                "Tonga Trench",
                 "Mariana Trench",
-                4)); // Increased by 1
+                "Japan Trench",
+                "Peru-Chile Trench",
+                2));
+
+        geographyQuestions.add(new Question(
+                "Which country has the most time zones?",
+                "Russia",
+                "United States",
+                "China",
+                "France",
+                4));
+
+        geographyQuestions.add(new Question(
+                "What is the highest waterfall in the world?",
+                "Niagara Falls",
+                "Victoria Falls",
+                "Angel Falls",
+                "Iguazu Falls",
+                3));
+
+        geographyQuestions.add(new Question(
+                "Which strait separates Europe and Africa?",
+                "Strait of Gibraltar",
+                "Bosphorus Strait",
+                "Strait of Hormuz",
+                "Dover Strait",
+                1));
+
+        geographyQuestions.add(new Question(
+                "What is the largest island in the world?",
+                "Madagascar",
+                "Greenland",
+                "New Guinea",
+                "Borneo",
+                2));
+
+        geographyQuestions.add(new Question(
+                "Which city is known as the 'Pearl of the Orient'?",
+                "Singapore",
+                "Hong Kong",
+                "Bangkok",
+                "Manila",
+                2));
+
+        geographyQuestions.add(new Question(
+                "What is the lowest point on Earth's surface?",
+                "Death Valley",
+                "Dead Sea",
+                "Caspian Sea",
+                "Lake Assal",
+                2));
+
+        geographyQuestions.add(new Question(
+                "Which country is entirely surrounded by South Africa?",
+                "Swaziland",
+                "Lesotho",
+                "Botswana",
+                "Namibia",
+                2));
+
+        geographyQuestions.add(new Question(
+                "What is the largest lake in Africa?",
+                "Lake Chad",
+                "Lake Tanganyika",
+                "Lake Victoria",
+                "Lake Malawi",
+                3));
+
+        geographyQuestions.add(new Question(
+                "Which European capital is divided by the Danube River?",
+                "Vienna",
+                "Budapest",
+                "Belgrade",
+                "Bratislava",
+                2));
+
+        geographyQuestions.add(new Question(
+                "What is the most populous city in the world?",
+                "Mumbai",
+                "Tokyo",
+                "Shanghai",
+                "Delhi",
+                2));
+
+        geographyQuestions.add(new Question(
+                "Which country has the longest coastline?",
+                "Russia",
+                "Canada",
+                "Australia",
+                "Norway",
+                2));
+
+        geographyQuestions.add(new Question(
+                "What is the capital of Brazil?",
+                "São Paulo",
+                "Rio de Janeiro",
+                "Brasília",
+                "Salvador",
+                3));
+
+        geographyQuestions.add(new Question(
+                "Which sea is between Italy and the Balkans?",
+                "Tyrrhenian Sea",
+                "Adriatic Sea",
+                "Ionian Sea",
+                "Aegean Sea",
+                2));
+
+        geographyQuestions.add(new Question(
+                "What is the largest country in South America?",
+                "Argentina",
+                "Brazil",
+                "Peru",
+                "Colombia",
+                2));
+
+        geographyQuestions.add(new Question(
+                "Which African country was never colonized?",
+                "Liberia",
+                "Ethiopia",
+                "Morocco",
+                "Egypt",
+                2));
+
+        geographyQuestions.add(new Question(
+                "What is the highest peak in North America?",
+                "Mount McKinley",
+                "Mount Whitney",
+                "Mount Elbert",
+                "Mount Washington",
+                1));
+
+        geographyQuestions.add(new Question(
+                "Which city straddles two continents?",
+                "Cairo",
+                "Istanbul",
+                "Suez",
+                "Casablanca",
+                2));
+
+        geographyQuestions.add(new Question(
+                "What is the largest bay in the world?",
+                "Bay of Bengal",
+                "Hudson Bay",
+                "Gulf of Mexico",
+                "Bay of Biscay",
+                1));
+
+        geographyQuestions.add(new Question(
+                "Which country has three capital cities?",
+                "Bolivia",
+                "South Africa",
+                "Switzerland",
+                "Netherlands",
+                2));
+
+        geographyQuestions.add(new Question(
+                "What is the driest place on Earth?",
+                "Death Valley",
+                "Sahara Desert",
+                "Atacama Desert",
+                "Gobi Desert",
+                3));
+
+        geographyQuestions.add(new Question(
+                "Which river flows through the Grand Canyon?",
+                "Mississippi River",
+                "Colorado River",
+                "Missouri River",
+                "Rio Grande",
+                2));
+
+        geographyQuestions.add(new Question(
+                "What is the largest peninsula in the world?",
+                "Iberian Peninsula",
+                "Arabian Peninsula",
+                "Indian Peninsula",
+                "Scandinavian Peninsula",
+                2));
+
+        geographyQuestions.add(new Question(
+                "Which country is known as the Land of the Rising Sun?",
+                "China",
+                "Japan",
+                "South Korea",
+                "Thailand",
+                2));
+
+        geographyQuestions.add(new Question(
+                "What is the southernmost continent?",
+                "South America",
+                "Australia",
+                "Antarctica",
+                "Africa",
+                3));
+
+        geographyQuestions.add(new Question(
+                "Which European country has the most islands?",
+                "Norway",
+                "Finland",
+                "Sweden",
+                "Denmark",
+                2));
+
+        geographyQuestions.add(new Question(
+                "What is the largest volcanic crater lake?",
+                "Crater Lake",
+                "Lake Toba",
+                "Laguna de Bay",
+                "Lake Taupo",
+                2));
+
+        geographyQuestions.add(new Question(
+                "Which country is home to Machu Picchu?",
+                "Bolivia",
+                "Peru",
+                "Ecuador",
+                "Colombia",
+                2));
+
+        geographyQuestions.add(new Question(
+                "What is the windiest place on Earth?",
+                "Mount Washington",
+                "Antarctica",
+                "Patagonia",
+                "Mount Everest",
+                2));
+
+        geographyQuestions.add(new Question(
+                "Which sea is the saltiest?",
+                "Red Sea",
+                "Dead Sea",
+                "Caspian Sea",
+                "Mediterranean Sea",
+                2));
+
+        geographyQuestions.add(new Question(
+                "What is the largest coral reef system?",
+                "Mesoamerican Reef",
+                "Great Barrier Reef",
+                "Caribbean Coral Reef",
+                "Red Sea Coral Reef",
+                2));
+
+        geographyQuestions.add(new Question(
+                "Which country has the most volcanoes?",
+                "Japan",
+                "Indonesia",
+                "Philippines",
+                "Chile",
+                2));
+
+        geographyQuestions.add(new Question(
+                "What is the largest freshwater lake by volume?",
+                "Lake Superior",
+                "Lake Baikal",
+                "Lake Tanganyika",
+                "Caspian Sea",
+                2));
+
+        geographyQuestions.add(new Question(
+                "Which country is known as the Roof of the World?",
+                "Nepal",
+                "Tibet",
+                "Bhutan",
+                "Afghanistan",
+                2));
+
+        geographyQuestions.add(new Question(
+                "What is the most linguistically diverse country?",
+                "India",
+                "Papua New Guinea",
+                "Indonesia",
+                "Nigeria",
+                2));
+
+        geographyQuestions.add(new Question(
+                "Which river delta is the largest in the world?",
+                "Nile Delta",
+                "Ganges Delta",
+                "Mississippi Delta",
+                "Amazon Delta",
+                2));
+
+        geographyQuestions.add(new Question(
+                "What is the flattest country in the world?",
+                "Netherlands",
+                "Maldives",
+                "Denmark",
+                "Bangladesh",
+                2));
 
         quizzes.put("Geography", geographyQuestions);
 
         // Biology Questions
         ArrayList<Question> biologyQuestions = new ArrayList<>();
-        biologyQuestions.add(new Question(
-                "What is the basic unit of life?",
-                "Atom",
-                "Molecule",
-                "Cell",
-                "Organ",
-                3)); // Increased by 1
-
-        biologyQuestions.add(new Question(
-                "Which organ pumps blood throughout the body?",
-                "Lungs",
-                "Brain",
-                "Liver",
-                "Heart",
-                4)); // Increased by 1
-
-        biologyQuestions.add(new Question(
-                "What is the process by which plants make their food?",
-                "Respiration",
-                "Photosynthesis",
-                "Transpiration",
-                "Fermentation",
-                2)); // Increased by 1
-
-        biologyQuestions.add(new Question(
-                "Which part of the cell contains genetic material?",
-                "Cytoplasm",
-                "Mitochondria",
-                "Nucleus",
-                "Ribosome",
-                3)); // Increased by 1
-
-        biologyQuestions.add(new Question(
-                "How many chambers does the human heart have?",
-                "2",
-                "3",
-                "4",
-                "5",
-                3)); // Increased by 1
-
-        biologyQuestions.add(new Question(
-                "Which gas do humans exhale?",
-                "Oxygen",
-                "Carbon Dioxide",
-                "Nitrogen",
-                "Hydrogen",
-                2)); // Increased by 1
-
-        biologyQuestions.add(new Question(
-                "What is the largest organ in the human body?",
-                "Heart",
-                "Liver",
-                "Skin",
-                "Brain",
-                3)); // Increased by 1
+        // 45 Biology Questions
 
         biologyQuestions.add(new Question(
                 "Which blood cells fight infection?",
@@ -583,23 +1454,303 @@ public class QuizManager {
                 "White blood cells",
                 "Platelets",
                 "Plasma",
-                2)); // Increased by 1
+                2));
 
         biologyQuestions.add(new Question(
-                "Which vitamin is produced when the skin is exposed to sunlight?",
+                "What is the powerhouse of the cell?",
+                "Nucleus",
+                "Mitochondria",
+                "Ribosome",
+                "Golgi apparatus",
+                2));
+
+        biologyQuestions.add(new Question(
+                "What is the basic unit of life?",
+                "Tissue",
+                "Cell",
+                "Organ",
+                "Organism",
+                2));
+
+        biologyQuestions.add(new Question(
+                "Which process do plants use to make food?",
+                "Respiration",
+                "Photosynthesis",
+                "Transpiration",
+                "Digestion",
+                2));
+
+        biologyQuestions.add(new Question(
+                "What is DNA's full name?",
+                "Deoxyribonucleic acid",
+                "Diribonucleic acid",
+                "Deoxyribose nucleic acid",
+                "Double ribonucleic acid",
+                1));
+
+        biologyQuestions.add(new Question(
+                "How many chambers does a human heart have?",
+                "2",
+                "4",
+                "6",
+                "8",
+                2));
+
+        biologyQuestions.add(new Question(
+                "Which organ produces insulin?",
+                "Liver",
+                "Pancreas",
+                "Kidney",
+                "Spleen",
+                2));
+
+        biologyQuestions.add(new Question(
+                "What is the largest organ in the human body?",
+                "Liver",
+                "Skin",
+                "Brain",
+                "Lungs",
+                2));
+
+        biologyQuestions.add(new Question(
+                "Which gas do plants absorb during photosynthesis?",
+                "Oxygen",
+                "Carbon dioxide",
+                "Nitrogen",
+                "Hydrogen",
+                2));
+
+        biologyQuestions.add(new Question(
+                "What is the study of fungi called?",
+                "Botany",
+                "Mycology",
+                "Zoology",
+                "Ecology",
+                2));
+
+        biologyQuestions.add(new Question(
+                "Which type of blood vessel carries blood away from the heart?",
+                "Veins",
+                "Arteries",
+                "Capillaries",
+                "Venules",
+                2));
+
+        biologyQuestions.add(new Question(
+                "What is the green pigment in plants called?",
+                "Carotene",
+                "Chlorophyll",
+                "Xanthophyll",
+                "Anthocyanin",
+                2));
+
+        biologyQuestions.add(new Question(
+                "How many chromosomes do humans normally have?",
+                "44",
+                "46",
+                "48",
+                "50",
+                2));
+
+        biologyQuestions.add(new Question(
+                "Which scientist is known for the theory of evolution?",
+                "Mendel",
+                "Darwin",
+                "Watson",
+                "Pasteur",
+                2));
+
+        biologyQuestions.add(new Question(
+                "What is the largest mammal in the world?",
+                "African elephant",
+                "Blue whale",
+                "Giraffe",
+                "Polar bear",
+                2));
+
+        biologyQuestions.add(new Question(
+                "Which part of the brain controls balance?",
+                "Cerebrum",
+                "Cerebellum",
+                "Medulla",
+                "Hypothalamus",
+                2));
+
+        biologyQuestions.add(new Question(
+                "What type of organism is a mushroom?",
+                "Plant",
+                "Fungus",
+                "Animal",
+                "Bacteria",
+                2));
+
+        biologyQuestions.add(new Question(
+                "Which vitamin prevents scurvy?",
                 "Vitamin A",
-                "Vitamin B",
                 "Vitamin C",
                 "Vitamin D",
-                4)); // Increased by 1
+                "Vitamin K",
+                2));
 
         biologyQuestions.add(new Question(
-                "Which organ is responsible for removing waste from the blood?",
-                "Lungs",
-                "Kidneys",
-                "Stomach",
+                "What is the longest bone in the human body?",
+                "Tibia",
+                "Femur",
+                "Humerus",
+                "Fibula",
+                2));
+
+        biologyQuestions.add(new Question(
+                "Which organelle contains the cell's genetic material?",
+                "Mitochondria",
+                "Nucleus",
+                "Ribosome",
+                "Lysosome",
+                2));
+
+        biologyQuestions.add(new Question(
+                "What is the process by which cells divide?",
+                "Meiosis",
+                "Mitosis",
+                "Osmosis",
+                "Diffusion",
+                2));
+
+        biologyQuestions.add(new Question(
+                "Which hormone regulates blood sugar levels?",
+                "Adrenaline",
+                "Insulin",
+                "Cortisol",
+                "Thyroxine",
+                2));
+
+        biologyQuestions.add(new Question(
+                "What is the smallest unit of classification?",
+                "Genus",
+                "Species",
+                "Family",
+                "Order",
+                2));
+
+        biologyQuestions.add(new Question(
+                "Which part of the eye controls the amount of light entering?",
+                "Cornea",
+                "Iris",
+                "Lens",
+                "Retina",
+                2));
+
+        biologyQuestions.add(new Question(
+                "What is the main function of red blood cells?",
+                "Fight infection",
+                "Transport oxygen",
+                "Clot blood",
+                "Produce antibodies",
+                2));
+
+        biologyQuestions.add(new Question(
+                "Which kingdom do bacteria belong to?",
+                "Plantae",
+                "Monera",
+                "Animalia",
+                "Fungi",
+                2));
+
+        biologyQuestions.add(new Question(
+                "What is the hardest substance in the human body?",
+                "Bone",
+                "Tooth enamel",
+                "Cartilage",
+                "Keratin",
+                2));
+
+        biologyQuestions.add(new Question(
+                "Which process removes waste from the blood?",
+                "Digestion",
+                "Filtration",
+                "Respiration",
+                "Circulation",
+                2));
+
+        biologyQuestions.add(new Question(
+                "What is the fastest land animal?",
+                "Lion",
+                "Cheetah",
+                "Leopard",
+                "Gazelle",
+                2));
+
+        biologyQuestions.add(new Question(
+                "Which gland is known as the master gland?",
+                "Thyroid",
+                "Pituitary",
+                "Adrenal",
+                "Parathyroid",
+                2));
+
+        biologyQuestions.add(new Question(
+                "What is the study of heredity called?",
+                "Ecology",
+                "Genetics",
+                "Anatomy",
+                "Physiology",
+                2));
+
+        biologyQuestions.add(new Question(
+                "Which type of muscle is found in the heart?",
+                "Skeletal",
+                "Cardiac",
+                "Smooth",
+                "Voluntary",
+                2));
+
+        biologyQuestions.add(new Question(
+                "What is the gestation period of a human pregnancy?",
+                "8 months",
+                "9 months",
+                "10 months",
+                "11 months",
+                2));
+
+        biologyQuestions.add(new Question(
+                "Which part of the plant conducts water?",
+                "Phloem",
+                "Xylem",
+                "Cambium",
+                "Epidermis",
+                2));
+
+        biologyQuestions.add(new Question(
+                "What is the largest bird in the world?",
+                "Eagle",
+                "Ostrich",
+                "Condor",
+                "Albatross",
+                2));
+
+        biologyQuestions.add(new Question(
+                "Which organ is responsible for detoxification?",
+                "Kidney",
+                "Liver",
+                "Spleen",
                 "Pancreas",
-                2)); // Increased by 1
+                2));
+
+        biologyQuestions.add(new Question(
+                "What is the basic unit of the nervous system?",
+                "Synapse",
+                "Neuron",
+                "Dendrite",
+                "Axon",
+                2));
+
+        biologyQuestions.add(new Question(
+                "Which process involves the breakdown of glucose?",
+                "Photosynthesis",
+                "Cellular respiration",
+                "Transpiration",
+                "Osmosis",
+                2));
 
         biologyQuestions.add(new Question(
                 "What is the scientific name for humans?",
@@ -607,39 +1758,55 @@ public class QuizManager {
                 "Homo sapiens",
                 "Homo habilis",
                 "Homo neanderthalensis",
-                2)); // Increased by 1
+                2));
 
         biologyQuestions.add(new Question(
-                "What do herbivores eat?",
-                "Meat",
-                "Plants",
-                "Both plants and meat",
-                "Insects",
-                2)); // Increased by 1
+                "Which enzyme breaks down starch?",
+                "Pepsin",
+                "Amylase",
+                "Lipase",
+                "Trypsin",
+                2));
 
         biologyQuestions.add(new Question(
-                "Which part of the plant conducts photosynthesis?",
-                "Root",
-                "Stem",
-                "Leaf",
-                "Flower",
-                3)); // Increased by 1
+                "What is the fluid that surrounds the brain called?",
+                "Blood",
+                "Cerebrospinal fluid",
+                "Lymph",
+                "Plasma",
+                2));
 
         biologyQuestions.add(new Question(
-                "What type of reproduction involves only one parent?",
-                "Sexual",
-                "Asexual",
-                "External fertilization",
-                "Internal fertilization",
-                2)); // Increased by 1
+                "Which animal can regenerate its tail?",
+                "Snake",
+                "Lizard",
+                "Frog",
+                "Bird",
+                2));
 
         biologyQuestions.add(new Question(
-                "Which system controls body activities with hormones?",
-                "Nervous system",
-                "Circulatory system",
-                "Digestive system",
-                "Endocrine system",
-                4)); // Increased by 1
+                "What is the smallest bone in the human body?",
+                "Stirrup bone",
+                "Hammer bone",
+                "Anvil bone",
+                "Jaw bone",
+                1));
+
+        biologyQuestions.add(new Question(
+                "Which blood type is considered the universal donor?",
+                "A",
+                "O",
+                "B",
+                "AB",
+                2));
+
+        biologyQuestions.add(new Question(
+                "What is the process of water movement through plants called?",
+                "Osmosis",
+                "Transpiration",
+                "Diffusion",
+                "Active transport",
+                2));
 
         quizzes.put("Biology", biologyQuestions);
     }
@@ -666,7 +1833,7 @@ public class QuizManager {
             };
 
             // Հիշում ենք ճիշտ պատասխանի տեքստը
-            String correctAnswer = options[original.getCorrectAnswer() - 1]; // Փոփոխված է այստեղ
+            String correctAnswer = options[original.getCorrectAnswer() - 1];
 
             // Ստեղծում ենք տարբերակների ArrayList և խառնում այն
             ArrayList<String> shuffledOptions = new ArrayList<>();
@@ -677,7 +1844,7 @@ public class QuizManager {
 
             // Գտնում ենք ճիշտ պատասխանի նոր ինդեքսը խառնված տարբերակներում
             int newCorrectIndex = -1;
-            for (int i = 0; i < shuffledOptions.size(); i++) { // Փոփոխված է այստեղ
+            for (int i = 0; i < shuffledOptions.size(); i++) {
                 if (shuffledOptions.get(i).equals(correctAnswer)) {
                     newCorrectIndex = i;
                     break;
@@ -704,7 +1871,7 @@ public class QuizManager {
                         shuffledOptions.get(1),
                         shuffledOptions.get(2),
                         shuffledOptions.get(3),
-                        newCorrectIndex + 1 // Փոփոխված է այստեղ
+                        newCorrectIndex + 1
                 ));
             }
         }
@@ -712,7 +1879,9 @@ public class QuizManager {
         // Խառնում ենք հարցերի հերթականությունը
         Collections.shuffle(shuffledQuestions);
 
-        return shuffledQuestions;
+        // Վերադարձնում ենք միայն առաջին 15 հարցերը
+        int questionsToReturn = Math.min(15, shuffledQuestions.size());
+        return new ArrayList<>(shuffledQuestions.subList(0, questionsToReturn));
     }
 
     public ArrayList<Question> getQuestions(String quizType) {

@@ -98,6 +98,7 @@
 
             <!-- Quest 1 - Military Position -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/quest1StartButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -145,18 +146,6 @@
                         app:layout_constraintStart_toEndOf="@+id/quest1Icon"
                         app:layout_constraintTop_toBottomOf="@+id/quest1Title" />
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/quest1StartButton"
-                        android:layout_width="80dp"
-                        android:layout_height="48dp"
-                        android:text="Start"
-                        android:textColor="#FFFFFF"
-                        app:backgroundTint="#6200EE"
-                        app:cornerRadius="20dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/quest1Description"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
                     <!-- Best Score Text instead of ProgressBar -->
                     <TextView
                         android:id="@+id/quest1BestScore"
@@ -174,6 +163,7 @@
 
             <!-- Quest 2 - Football Player -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/quest2StartButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -221,18 +211,6 @@
                         app:layout_constraintStart_toEndOf="@+id/quest2Icon"
                         app:layout_constraintTop_toBottomOf="@+id/quest2Title" />
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/quest2StartButton"
-                        android:layout_width="80dp"
-                        android:layout_height="48dp"
-                        android:text="Start"
-                        android:textColor="#FFFFFF"
-                        app:backgroundTint="#6200EE"
-                        app:cornerRadius="20dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/quest2Description"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
                     <!-- Best Score Text instead of ProgressBar -->
                     <TextView
                         android:id="@+id/quest2BestScore"
@@ -250,6 +228,7 @@
 
             <!-- Quest 3 - Mountain Challenge -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/quest3StartButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -297,17 +276,6 @@
                         app:layout_constraintStart_toEndOf="@+id/quest3Icon"
                         app:layout_constraintTop_toBottomOf="@+id/quest3Title" />
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/quest3StartButton"
-                        android:layout_width="80dp"
-                        android:layout_height="48dp"
-                        android:text="Start"
-                        android:textColor="#FFFFFF"
-                        app:backgroundTint="#6200EE"
-                        app:cornerRadius="20dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/quest3Description"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
 
                     <!-- Best Score Text instead of ProgressBar -->
                     <TextView
@@ -326,6 +294,7 @@
 
             <!-- Quest 4 - School Student -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/quest4StartButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -373,18 +342,6 @@
                         app:layout_constraintStart_toEndOf="@+id/quest4Icon"
                         app:layout_constraintTop_toBottomOf="@+id/quest4Title" />
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/quest4StartButton"
-                        android:layout_width="80dp"
-                        android:layout_height="48dp"
-                        android:text="Start"
-                        android:textColor="#FFFFFF"
-                        app:backgroundTint="#6200EE"
-                        app:cornerRadius="20dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/quest4Description"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
                     <!-- Best Score Text instead of ProgressBar -->
                     <TextView
                         android:id="@+id/quest4BestScore"
@@ -402,6 +359,7 @@
 
             <!-- Quest 5 - Love Story -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/quest5StartButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -448,18 +406,6 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/quest5Icon"
                         app:layout_constraintTop_toBottomOf="@+id/quest5Title" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/quest5StartButton"
-                        android:layout_width="80dp"
-                        android:layout_height="48dp"
-                        android:text="Start"
-                        android:textColor="#FFFFFF"
-                        app:cornerRadius="20dp"
-                        app:backgroundTint="#6200EE"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="@+id/quest5Description" />
 
                     <!-- Best Score Text instead of ProgressBar -->
                     <TextView
